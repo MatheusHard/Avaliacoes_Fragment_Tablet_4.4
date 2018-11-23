@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Fragment_Cadastro_Avaliacao">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e2d6cc"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="35dp"
+                android:paddingBottom="35dp"
+                android:text="Avaliação"
+                android:textAlignment="center"
+                android:textColor="@color/titulo"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/cidade"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spinnerCidadesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/conteudo_teorico"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/aplica_o_no_processo_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/radioButtonSim1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/proporcionou_novos_conhecimentos" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonNao1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="20sp"
+                    android:text="@string/n_o_me_proporcionou_conhecimento_do_que_j_possu_a" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/conteudo_pratico"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_facilidades_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+            <TextView
+
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:paddingTop="15sp"
+                android:paddingBottom="35sp"
+                android:text="@string/aplica_o_no_processo_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/radioButtonseguro3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estou seguro(a) para utilização em campo." />
+
+                <RadioButton
+                    android:id="@+id/radioButtonpoucoseguro3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estou pouco seguro(a) para utilização em campo." />
+
+                <RadioButton
+                    android:id="@+id/radioButtonInseguro3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estou inseguro(a) para utilização em campo." />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/carga_horaria"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="20sp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonExcessiva4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Excessiva" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRazoavel4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Razoável" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonInsuficiente4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Insuficiente" />
+
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/instrutor"
+                android:textAlignment="center"
+
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/conhecimento_conteudo"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_exposicao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/esclarecerDuvidas"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="20sp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/equipe_de_apoio"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/conhecimento_conteudo"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_exposicao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/esclarecerDuvidas"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                android:paddingBottom="20sp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtimo10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/muito_bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBom10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bom" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRegular10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regular" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonRuim10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ruim" />
+
+
+            </RadioGroup>
+
+
+            <TextView
+
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/sugestoes"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <EditText
+
+                android:id="@+id/editTextAvaliacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:paddingBottom="20sp" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp" />
+
+            <Button
+
+                android:id="@+id/buttonCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#16ce1a"
+                android:text="@string/botao_salvar"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30sp"
+                android:text=""
+                android:textColor="#2c2b30" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

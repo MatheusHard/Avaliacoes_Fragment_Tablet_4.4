@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_cadastro_avaliacao"
+        android:title="@string/item_cadastrar_avaliacao"
+        android:icon="@drawable/ic_exit"/>
+
+    <item
+        android:id="@+id/menu_item_listar_avaliacoes"
+        android:title="@string/listar_avaliacoes" />
+
+    <item
+        android:id="@+id/menu_item_sair"
+        android:title="@string/item_sair" />
+</menu>

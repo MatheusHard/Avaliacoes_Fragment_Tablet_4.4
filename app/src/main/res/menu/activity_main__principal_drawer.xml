@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_avaliacao"
+            android:icon="@drawable/ic_avaliacao"
+            android:title="@string/avaliacao" />
+
+        <item
+            android:id="@+id/nav_cidade"
+            android:icon="@drawable/ic_city"
+            android:title="@string/cidade" />
+
+    </group>
+
+    <item android:title="Outros">
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit"
+                android:title="Sair" />
+
+        </menu>
+    </item>
+
+</menu>
