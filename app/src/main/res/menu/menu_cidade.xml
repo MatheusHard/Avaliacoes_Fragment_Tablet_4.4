@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_cadastro_cidade"
+        android:title="@string/item_cadastrar_cidade"/>
+
+    <item
+        android:id="@+id/menu_item_listar_cidades"
+        android:title="@string/item_listar_cidade" />
+
+    <item
+        android:id="@+id/menu_item_sair"
+        android:title="@string/item_sair" />
+
+</menu>

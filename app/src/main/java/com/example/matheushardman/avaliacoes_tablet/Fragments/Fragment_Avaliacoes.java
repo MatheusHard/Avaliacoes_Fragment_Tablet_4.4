@@ -21,11 +21,10 @@ import com.example.matheushardman.avaliacoes_tablet.R;
  */
 public class Fragment_Avaliacoes extends Fragment {
 
-
+    FragmentTransaction transaction;
     FloatingActionButton floatingActionButtonCadastroAvaliacao;
 
     public Fragment_Avaliacoes() {
-        // Required empty public constructor
     }
 
 
@@ -39,7 +38,7 @@ public class Fragment_Avaliacoes extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getContext(), "Acessando Cadsatro Avaliação", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Acessando Cadsatro Avaliação...", Toast.LENGTH_SHORT).show();
                 Fragment_Cadastro_Avaliacao someFragment = new Fragment_Cadastro_Avaliacao();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
@@ -50,8 +49,6 @@ public class Fragment_Avaliacoes extends Fragment {
         });
 
         setHasOptionsMenu(true);
-
-
         return v;
     }
     @Override
@@ -63,17 +60,30 @@ public class Fragment_Avaliacoes extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+
             case R.id.menu_item_cadastro_avaliacao:
 
-                Toast.makeText(getContext(), "CADATRO AVALIACAO", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getContext(), "ACESSANDO CADASTRO AVALIACAO", Toast.LENGTH_SHORT).show();
+                Fragment_Cadastro_Avaliacao fragmentCadastroAvaliacao = new Fragment_Cadastro_Avaliacao();
+                transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment, fragmentCadastroAvaliacao ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
                 break;
+
             case R.id.menu_item_listar_avaliacoes:
+
                 Toast.makeText(getContext(), "LISTAR AVALIAÇÕES", Toast.LENGTH_SHORT).show();
+                Fragment_Resultado fragmentResultado= new Fragment_Resultado();
+                transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment, fragmentResultado); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
                 break;
 
             case R.id.menu_item_sair:
                 Toast.makeText(getContext(), "SAINDO...", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
                 break;
         }
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,15 +157,17 @@ public class Fragment_Cadastro_Cidade extends Fragment {
 
                     db_avaliacao.inserirCidade(cidade);
                     Toast.makeText(getContext(), "Cidade cadastrada com sucesso!!!", Toast.LENGTH_SHORT).show();
-                   // Intent it = new Intent(MainActivity_Cadastro_Usuario.this, MainActivity_Usuario_Nav.class);
-                    //Intent it = new Intent(MainActivity_Cadastro_Usuario.this, MainActivity_Usuario.class);
 
-
+                    Fragment_Cidades someFragment = new Fragment_Cidades();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
+                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                    transaction.commit();
 
                 }else{
                     Toast.makeText(getContext(), "Cidade já existe!!!", Toast.LENGTH_SHORT).show();
                     }
-              }
+                 }
 
         }catch (Exception e){
 

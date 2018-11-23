@@ -54,6 +54,9 @@
     <string name="cidade">Cidade</string>
     <string name="estado">Estado</string>
     <string name="uf">UF</string>
+    <string name="item_cadastrar_cidade">Cadastrar Cidade</string>
+    <string name="item_listar_cidade">Listar Cidades</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
