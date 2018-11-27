@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Fragment_Listar_Avaliacoes">
+
+    <!-- TODO: Update blank fragment layout -->
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#e2d6cc">
+       <TextView
+
+           android:id="@+id/textView34"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentStart="true"
+           android:layout_alignParentTop="true"
+           android:layout_marginStart="0dp"
+           android:layout_marginTop="114dp"
+           android:background="#9b928a"
+           android:text="Avaliações"
+           android:textAlignment="center"
+           android:textColor="@android:color/white"
+           android:textSize="20sp" />
+
+       <TextView
+
+           android:id="@+id/textView26"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentStart="true"
+           android:layout_alignParentTop="true"
+           android:layout_marginStart="0dp"
+           android:layout_marginTop="26dp"
+           android:background="#9b928a"
+           android:text="@string/cidade"
+           android:textAlignment="center"
+           android:textColor="@android:color/white"
+           android:textSize="20sp" />
+
+       <TextView
+           android:id="@+id/textViewCidadeNome"
+           android:layout_width="match_parent"
+           android:layout_height="39dp"
+           android:layout_below="@+id/textView26"
+           android:layout_alignParentStart="true"
+           android:layout_marginStart="0dp"
+           android:layout_marginTop="17dp"
+           android:layout_marginBottom="27dp"
+           android:textAlignment="center"
+           tools:layout_editor_absoluteX="39dp"
+           tools:layout_editor_absoluteY="89dp" />
+
+       <ListView
+           android:id="@+id/listViewAvaliacoes"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@+id/textView34"
+           android:layout_alignParentStart="true"
+           android:layout_marginTop="16dp" />
+
+   </RelativeLayout>
+
+</FrameLayout>

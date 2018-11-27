@@ -76,7 +76,16 @@ public class Fragment_Resultado extends Fragment {
                 if(posicao > 0) {
 
                     Toast.makeText(getContext(), "Listando Avaliações..", Toast.LENGTH_LONG).show();
-                   /*Fragment*/
+                    Fragment_Listar_Avaliacoes fragmentListarAvaliacoes = new Fragment_Listar_Avaliacoes();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("cidadeNome", cidade);
+                    bundle.putInt("cidadeId", posicao);
+                    fragmentListarAvaliacoes.setArguments(bundle);
+                    transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment, fragmentListarAvaliacoes); // give your fragment container id in first parameter
+                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                    transaction.commit();
+
                 }else{
 
                     Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();

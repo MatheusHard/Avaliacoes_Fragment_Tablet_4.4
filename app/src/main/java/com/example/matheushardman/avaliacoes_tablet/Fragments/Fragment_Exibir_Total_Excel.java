@@ -101,6 +101,8 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             }
         });
 
+
+
         return v;
 
     }
