@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.classes.Cidade;
-import com.example.matheushardman.avaliacoes_tablet.classes.Usuarios;
 
 import java.util.ArrayList;
 
@@ -58,13 +57,103 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
 
         db.execSQL(usuarioPadrao);
 
+        String c0 = "INSERT INTO cidade(descricao) VALUES ('escolha uma opção')";
+        String c1 = "INSERT INTO cidade(descricao) VALUES ('AGUA PRETA-PE')";
+        String c2 = "INSERT INTO cidade(descricao) VALUES ('ALHANDRA-PB')";
+        String c3 = "INSERT INTO cidade(descricao) VALUES ('ARAPONGA-MG')";
+        String c4 = "INSERT INTO cidade(descricao) VALUES ('ARES-RN')";
+        String c5 = "INSERT INTO cidade(descricao) VALUES ('BERNARDINO BATISTA-PB')";
+        String c6 = "INSERT INTO cidade(descricao) VALUES ('BRUMADO-BA')";
+        String c7 = "INSERT INTO cidade(descricao) VALUES ('CAJURI-MG')";
+        String c8 = "INSERT INTO cidade(descricao) VALUES ('CANAÃ-MG')";
+        String c9 = "INSERT INTO cidade(descricao) VALUES ('CONDADO-PE')";
+        String c10 = "INSERT INTO cidade(descricao) VALUES ('ESPERA FELIZ-MG')";
+        String c11 = "INSERT INTO cidade(descricao) VALUES ('EUNAPOLIS-BA')";
+        String c12 = "INSERT INTO cidade(descricao) VALUES ('FREI MARTINHO-PB')";
+        String c13 = "INSERT INTO cidade(descricao) VALUES ('GOIANINHA-RN')";
+        String c14 = "INSERT INTO cidade(descricao) VALUES ('GUAMARÉ-RN')";
+        String c15 = "INSERT INTO cidade(descricao) VALUES ('GUARACIABA-MG')";
+        String c16 = "INSERT INTO cidade(descricao) VALUES ('GURINHÉM-PB')";
+        String c17 = "INSERT INTO cidade(descricao) VALUES ('ITAPOROROCA-PB')";
+        String c18 = "INSERT INTO cidade(descricao) VALUES ('ITATUBA-PB')";
+        String c19 = "INSERT INTO cidade(descricao) VALUES ('JABOATÃO DOS GUARARAPES-PE')";
+        String c20 = "INSERT INTO cidade(descricao) VALUES ('JOCA CLAUDINO-PB(SANTAREM)')";
+        String c21 = "INSERT INTO cidade(descricao) VALUES ('MACAU-RN')";
+        String c22 = "INSERT INTO cidade(descricao) VALUES ('MOSSORÓ-RN')";
+        String c23 = "INSERT INTO cidade(descricao) VALUES ('PAULA CANDIDO-MG')";
+        String c24 = "INSERT INTO cidade(descricao) VALUES ('PAULISTA-PE')";
+        String c25 = "INSERT INTO cidade(descricao) VALUES ('PEDRA LAVRADA-PB')";
+        String c26 = "INSERT INTO cidade(descricao) VALUES ('PIRAÍ-RJ')";
+        String c27 = "INSERT INTO cidade(descricao) VALUES ('PORTO DO MANGUE-RN')";
+        String c28 = "INSERT INTO cidade(descricao) VALUES ('REMIGIO-PB')";
+        String c29 = "INSERT INTO cidade(descricao) VALUES ('SANTA LUZIA-PB')";
+        String c30 = "INSERT INTO cidade(descricao) VALUES ('SÃO JOSÉ DE UBA-RJ')";
+        String c31 = "INSERT INTO cidade(descricao) VALUES ('SÃO JOSÉ DO MIPIBU-RN')";
+        String c32 = "INSERT INTO cidade(descricao) VALUES ('SERRA DO MEL-RN')";
+        String c33 = "INSERT INTO cidade(descricao) VALUES ('SERTÂNIA-PE')";
+        String c34 = "INSERT INTO cidade(descricao) VALUES ('TAIPU-RN')";
+        String c35 = "INSERT INTO cidade(descricao) VALUES ('TAPEROÁ-PB')";
+        String c36 = "INSERT INTO cidade(descricao) VALUES ('TIBAU-RN')";
+        String c37 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN')";
+        String c38 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN (EDEIMAS)')";
 
 
-        String cidadesEscolha= "INSERT INTO cidade(descricao) VALUES ('Escolha uma Opção')";
-        String aguaPreta= "INSERT INTO cidade(descricao) VALUES ('AGUA PRETA-PE')";
 
-        db.execSQL(cidadesEscolha);
-        db.execSQL(aguaPreta);
+        db.execSQL(c0);
+        db.execSQL(c1);
+        db.execSQL(c2);
+        db.execSQL(c3);
+        db.execSQL(c4);
+        db.execSQL(c5);
+        db.execSQL(c6);
+        db.execSQL(c7);
+        db.execSQL(c8);
+        db.execSQL(c9);
+        db.execSQL(c10);
+        db.execSQL(c11);
+        db.execSQL(c12);
+        db.execSQL(c13);
+        db.execSQL(c14);
+        db.execSQL(c15);
+        db.execSQL(c16);
+        db.execSQL(c17);
+        db.execSQL(c18);
+        db.execSQL(c19);
+        db.execSQL(c20);
+        db.execSQL(c21);
+        db.execSQL(c22);
+        db.execSQL(c23);
+        db.execSQL(c24);
+        db.execSQL(c25);
+        db.execSQL(c26);
+        db.execSQL(c27);
+        db.execSQL(c28);
+        db.execSQL(c29);
+        db.execSQL(c30);
+        db.execSQL(c31);
+        db.execSQL(c32);
+        db.execSQL(c33);
+        db.execSQL(c34);
+        db.execSQL(c35);
+        db.execSQL(c36);
+        db.execSQL(c37);
+        db.execSQL(c38);
+
+
+        /*
+
+        String arrayCidades [] = new String[1000];
+        arrayCidades [0] = "INSERT INTO cidade(descricao) VALUES ('escolha uma opção')";
+        arrayCidades [1] = "INSERT INTO cidade(descricao) VALUES ('AGUA PRETA-PE')";
+        arrayCidades [2] = "INSERT INTO cidade(descricao) VALUES ('ALHANDRA-PB')";
+        arrayCidades [3] = "INSERT INTO cidade(descricao) VALUES ('ARAPONGA-MG')";
+        arrayCidades [4] = "INSERT INTO cidade(descricao) VALUES ('ARES-RN')";
+        arrayCidades [5] = "INSERT INTO cidade(descricao) VALUES ('BERNARDINO BATISTA-PB')";
+
+        for (String query :arrayCidades) {
+            db.execSQL(query);
+        }*/
+
 
 
 
