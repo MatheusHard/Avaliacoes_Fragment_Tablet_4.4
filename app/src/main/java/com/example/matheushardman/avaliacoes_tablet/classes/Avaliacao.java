@@ -11,7 +11,7 @@ public class Avaliacao implements Serializable {
     @Override
     public String toString(){
 
-        return  "Id: " +this.idAv+ "\nSugestão: " +this.sugestoes+"\nData: "+ this.data+"\nSim: " +this.radioSim_1+"\nNão: "+ this.radioNao_1;
+        return  "Código: " +this.idAv+ "\nData: "+ this.data;
     }
 
     /**********************Conteudo Teórico*******************************/

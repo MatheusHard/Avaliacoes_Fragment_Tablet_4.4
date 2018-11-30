@@ -97,8 +97,6 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
         String c37 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN')";
         String c38 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN (EDEIMAS)')";
 
-
-
         db.execSQL(c0);
         db.execSQL(c1);
         db.execSQL(c2);

@@ -10,7 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matheushardman.avaliacoes_tablet.Adapters.AdapterAvaliacao;
 import com.example.matheushardman.avaliacoes_tablet.R;
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
@@ -37,6 +40,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     private ArrayList<Avaliacao> arrayAvaliacoes;
     private ArrayAdapter<Avaliacao> adapter;
     Avaliacao avaliacao = new Avaliacao();
+    Avaliacao avaliacaoEscolhida = null;
     private AlertDialog alerta;
     private FragmentTransaction transaction;
 
@@ -62,8 +66,8 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
 
         textViewCidadeNome.setText(cidadeNome);
 
-
-        listViewAvaliacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /****************FUNCIONANDO********************/
+     /*  listViewAvaliacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
 
@@ -79,32 +83,59 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
                 }
-        });
+        });*/
+
 
         listViewAvaliacoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long id) {
-                avaliacao= (Avaliacao) adapter.getItemAtPosition(position);
+                avaliacao = (Avaliacao) adapter.getItemAtPosition(position);
+                avaliacaoEscolhida = (Avaliacao) adapter.getItemAtPosition(position);
                 return false;
             }
         });
+
 
         return v;
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        MenuItem menuDelete = menu.add("Deletar Avaliação");
+        menu.setHeaderTitle("MENU AVALIAÇÃO");
+
+
+        //menu.setHeaderIcon(R.drawable.botao_add);
+        MenuItem menuDelete = menu.add(Menu.NONE, 1, Menu.NONE, "DELETAR");
+        MenuItem menuEditar = menu.add(Menu.NONE, 2, Menu.NONE, "EDITAR");
+
+
+       menuEditar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Toast.makeText(getContext(), "Entrando Editar Avaliação!!!", Toast.LENGTH_SHORT).show();
+                Fragment_Editar_Avaliacao fragmentEditarAvaliacoes = new Fragment_Editar_Avaliacao();
+                Bundle bundle = new Bundle();
+                bundle.putString("cidadeNome", cidadeNome);
+                bundle.putSerializable("avaliacao-escolhida", avaliacaoEscolhida);
+                fragmentEditarAvaliacoes.setArguments(bundle);
+                transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment, fragmentEditarAvaliacoes ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
+                return false;
+            }
+        });
         menuDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
                 dialogExcluir();
-
                 return true;
             }
         });
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -127,13 +158,28 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
         db_avaliacao.close();
 
         if(arrayAvaliacoes != null){
-            /*????????????????????*/
             //adapter = new ArrayAdapter<Avaliacao>(MainActivity_Listar_Avaliacoes.this, android.R.layout.simple_list_item_1, arrayAvaliacoes);
             adapter = new ArrayAdapter<Avaliacao>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, arrayAvaliacoes);
             listViewAvaliacoes.setAdapter(adapter);
 
         }
     }
+
+
+   /* public void carregarAvalicoes(int cidadeId){
+
+        arrayAvaliacoes = db_avaliacao.getAvaliacoesCidade(cidadeId);
+
+        db_avaliacao.close();
+
+        if(arrayAvaliacoes != null){
+            AdapterAvaliacao adapterAvaliacao = new AdapterAvaliacao(context, arrayAvaliacoes);
+
+            adapter = new ArrayAdapter<Avaliacao>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, arrayAvaliacoes);
+            listViewAvaliacoes.setAdapter(adapterAvaliacao);
+
+        }
+    }*/
 
     private void dialogExcluir() {
 

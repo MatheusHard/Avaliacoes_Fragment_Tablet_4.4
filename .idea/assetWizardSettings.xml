@@ -73,6 +73,7 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="color" value="2819a9" />
                             <entry key="outputName" value="ic_city" />
                             <entry key="sourceFile" value="C:\Users\Matheus Hardman" />
                           </map>
