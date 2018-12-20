@@ -35,11 +35,11 @@ public class AdapterAvaliacao extends ArrayAdapter<Avaliacao> {
 
         convertView = LayoutInflater.from(this.context).inflate(R.layout.avaliacao, null);
 
-        TextView textViewId = convertView.findViewById(R.id.textViewId);
-        textViewId.setText(avaliacaoPosicao.getIdAv());
+       // TextView textViewId = convertView.findViewById(R.id.textViewId);
+        //textViewId.setText(avaliacaoPosicao.getIdAv());
 
-        TextView textViewData= convertView.findViewById(R.id.textViewData);
-        textViewData.setText(avaliacaoPosicao.getData());
+        //TextView textViewData= convertView.findViewById(R.id.textViewData);
+        //textViewData.setText(avaliacaoPosicao.getData());
 
 
         //ImageView imageView = convertView.findViewById(R.id.imageView);

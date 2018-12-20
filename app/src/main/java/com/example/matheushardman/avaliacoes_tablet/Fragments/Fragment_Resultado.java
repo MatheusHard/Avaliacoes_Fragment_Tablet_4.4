@@ -17,7 +17,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.matheushardman.avaliacoes_tablet.R;
+import com.example.matheushardman.avaliacoes_tablet.classes.Uf;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +34,7 @@ public class Fragment_Resultado extends Fragment {
     private Button buttonResultado, buttonListasAvaliacoes;
     private Spinner spinnerResultado;
     private FragmentTransaction transaction;
-
+    private int id_cidade = 0;
     private String cidade;
     public Fragment_Resultado() {
         // Required empty public constructor
@@ -42,12 +45,18 @@ public class Fragment_Resultado extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_fragment__resultado, container, false);
+
         spinnerResultado = v.findViewById(R.id.spinnerResultado);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this.getActivity(),
                 android.R.layout.simple_spinner_item,
                 //arrayCidades);
-                db_avaliacao.getCidades());
+                db_avaliacao.getCidades());*/
+        ArrayAdapter adapter = new ArrayAdapter(
+                this.getActivity(),
+                android.R.layout.simple_spinner_item,
+                getCidadesUfs());
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         spinnerResultado.setAdapter(adapter);
@@ -56,9 +65,12 @@ public class Fragment_Resultado extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
 
+                Uf uf = (Uf) adapter.getItemAtPosition(position);
                 posicao = position;
-                cidade = (String) adapter.getItemAtPosition(position);
-
+                cidade  = uf.getCidade().getDescricao();
+                id_cidade = uf.getCidade().getId_cidade();
+                //cidade = (String) adapter.getItemAtPosition(position);
+                //posicao = position
 
             }
 
@@ -74,13 +86,13 @@ public class Fragment_Resultado extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(posicao > 0) {
+                if(id_cidade > 0) {
 
                     Toast.makeText(getContext(), "Listando Avaliações..", Toast.LENGTH_LONG).show();
                     Fragment_Listar_Avaliacoes fragmentListarAvaliacoes = new Fragment_Listar_Avaliacoes();
                     Bundle bundle = new Bundle();
                     bundle.putString("cidadeNome", cidade);
-                    bundle.putInt("cidadeId", posicao);
+                    bundle.putInt("cidadeId", id_cidade);
                     fragmentListarAvaliacoes.setArguments(bundle);
                     transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment, fragmentListarAvaliacoes); // give your fragment container id in first parameter
@@ -102,13 +114,13 @@ public class Fragment_Resultado extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(posicao > 0) {
+                if(id_cidade > 0) {
 
                     Toast.makeText(getContext(), "Acessando Exibindo Total Avaliações..", Toast.LENGTH_LONG).show();
                     Fragment_Exibir_Total_Excel fragmentExibirTotalExcel = new Fragment_Exibir_Total_Excel();
                     Bundle bundle = new Bundle();
                     bundle.putString("cidadeNome", cidade);
-                    bundle.putInt("cidadeId", posicao);
+                    bundle.putInt("cidadeId", id_cidade);
                     fragmentExibirTotalExcel.setArguments(bundle);
                     transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment, fragmentExibirTotalExcel ); // give your fragment container id in first parameter
@@ -131,6 +143,17 @@ public class Fragment_Resultado extends Fragment {
         this.context = context;
         db_avaliacao = new Db_Avaliacao(context);
         super.onAttach(context);
+    }
+
+    private ArrayList<Uf> getCidadesUfs() {
+
+        ArrayList<Uf> arrayListCidadesUfs = new ArrayList<>();
+
+        arrayListCidadesUfs = db_avaliacao.getCidadesUf();
+        db_avaliacao.close();
+
+        return arrayListCidadesUfs;
+
     }
 
 }

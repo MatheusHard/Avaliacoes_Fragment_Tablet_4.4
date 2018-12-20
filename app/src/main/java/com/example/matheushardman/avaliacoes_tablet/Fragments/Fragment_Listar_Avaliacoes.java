@@ -43,6 +43,9 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     Avaliacao avaliacaoEscolhida = null;
     private AlertDialog alerta;
     private FragmentTransaction transaction;
+    private TextView textViewSim1, textViewNao1, textViewClareza2, textViewAplicacao3, textViewCargaHoraria4,
+            textViewConhecimentoInstrutor5, textViewClareza6, textViewDisponibilidade7, textViewConhecimento8,
+            textViewClareza9, textViewDisponibilidade10, textViewNomeCidade, textViewSugestao11;
 
 
     public Fragment_Listar_Avaliacoes() {
@@ -107,9 +110,11 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
         //menu.setHeaderIcon(R.drawable.botao_add);
         MenuItem menuDelete = menu.add(Menu.NONE, 1, Menu.NONE, "DELETAR");
         MenuItem menuEditar = menu.add(Menu.NONE, 2, Menu.NONE, "EDITAR");
+        MenuItem menuResumo = menu.add(Menu.NONE, 3, Menu.NONE, "RESUMO");
 
 
-       menuEditar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+        menuEditar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
@@ -131,6 +136,14 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
 
                 dialogExcluir();
+                return true;
+            }
+        });
+        menuResumo.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(getContext(), "Entrando Resumo Avaliação!!!", Toast.LENGTH_SHORT).show();
+                dialogResumo();
                 return true;
             }
         });
@@ -213,6 +226,88 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
         alerta.show();
     }
 
+    private void dialogResumo(){
 
+
+        //LayoutInflater é utilizado para inflar nosso layout em uma view.
+        //-pegamos nossa instancia da classe
+        LayoutInflater li = getLayoutInflater();
+
+        //inflamos o layout alerta.xml na view
+        View view = li.inflate(R.layout.avaliacao, null);
+
+        textViewSim1 = view.findViewById(R.id.textViewSim1);
+        textViewSim1 = view.findViewById(R.id.textViewSim1);
+        textViewNao1 = view.findViewById(R.id.textViewNao1);
+        textViewClareza2 = view.findViewById(R.id.textViewClareza2);
+        textViewAplicacao3 = view.findViewById(R.id.textViewAplicacao3);
+        textViewCargaHoraria4 = view.findViewById(R.id.textViewCargaHoraria4);
+        textViewConhecimentoInstrutor5 = view.findViewById(R.id.textViewConhecimentoInstrutor5);
+        textViewClareza6 = view.findViewById(R.id.textViewClareza6);
+        textViewDisponibilidade7 = view.findViewById(R.id.textViewDisponibilidade7);
+        textViewConhecimento8 = view.findViewById(R.id.textViewConhecimento8);
+        textViewClareza9 = view.findViewById(R.id.textViewClareza9);
+        textViewDisponibilidade10 = view.findViewById(R.id.textViewDisponibilidade10);
+        textViewSugestao11 = view.findViewById(R.id.textViewSugestao11);
+
+        textViewSim1.setText(String.format(getResources().getString(R.string.sim) +" "+ avaliacao.getRadioSim_1()));
+        textViewNao1.setText(String.format(getResources().getString(R.string.nao)+" "+ avaliacao.getRadioNao_1()));
+
+        textViewClareza2.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_2()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_2()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_2()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_2()));
+
+
+        textViewAplicacao3.setText(String.format(getResources().getString(R.string.seguro)+" "+avaliacao.getRadioSeguro_3()
+                +"\n"+getResources().getString(R.string.pouco_seguro) +" "+ avaliacao.getRadioPoucoSeguro_3()+"\n"+getResources().getString(R.string.inseguro)+" "+avaliacao.getRadioInseguro_3()));
+
+        textViewCargaHoraria4.setText(String.format(getResources().getString(R.string.excessiva)+" "+avaliacao.getRadioExcessiva_4()+"\n"+
+                getResources().getString(R.string.razoavel)+" "+avaliacao.getRadioRazoavel_4()+"\n"+getResources().getString(R.string.insuficiente)+" "+avaliacao.getRadioInsuficiente_4()));
+
+        textViewConhecimentoInstrutor5.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_5()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_5()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_5()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_5()));
+
+        textViewClareza6.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_6()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_6()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_6()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_6()));
+
+        textViewDisponibilidade7.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_7()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_7()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_7()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_7()));
+
+        textViewConhecimento8.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadiobom_8()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_8()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_8()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_8()));
+
+        textViewClareza9.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_9()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_9()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_9()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_9()));
+
+        textViewDisponibilidade10.setText(String.format(getResources().getString(R.string.muito_bom2)+" "+avaliacao.getRadioMuito_10()+"\n"+
+                getResources().getString(R.string.bom2)+" "+avaliacao.getRadiobom_10()+"\n"+getResources().getString(R.string.regular2)+" "+avaliacao.getRadioRegular_10()+"\n"+
+                getResources().getString(R.string.ruim2)+" "+avaliacao.getRadioRuim_10()));
+
+        textViewSugestao11.setText(avaliacao.getSugestoes());
+
+        //definimos para o botão do layout um clickListener
+        view.findViewById(R.id.buttonResumo).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                //exibe um Toast informativo.
+               // Toast.makeText(getContext(), "alerta.dismiss()", Toast.LENGTH_SHORT).show();
+                //desfaz o alerta.
+                alerta.dismiss();
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Titulo");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
+    }
 }
+
+
+
 

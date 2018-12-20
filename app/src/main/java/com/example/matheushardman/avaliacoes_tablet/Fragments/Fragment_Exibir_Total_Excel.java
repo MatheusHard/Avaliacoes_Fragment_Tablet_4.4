@@ -94,6 +94,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                     transaction.commit();
                     //carregarAvaliacao(posicao);
 
+
                 }else {
 
                     Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();

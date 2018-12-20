@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.classes.Cidade;
+import com.example.matheushardman.avaliacoes_tablet.classes.Uf;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,159 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
         "descricao VARCHAR (500), id_cidade INTEGER, data VARCHAR(20))";
 
         db.execSQL(avaliacao);
+
+        /*****************************UF***************************************/
+
+        String uf = "CREATE TABLE IF NOT EXISTS uf(id_uf INTEGER PRIMARY KEY autoincrement, descricao VARCHAR(2))";
+        db.execSQL(uf);
+
+
+
+        String u1 = "INSERT INTO uf(descricao) VALUES ('AC')";
+        String u2 = "INSERT INTO uf(descricao) VALUES ('AL')";
+        String u3 = "INSERT INTO uf(descricao) VALUES ('AM')";
+        String u4 = "INSERT INTO uf(descricao) VALUES ('AP')";
+        String u5 = "INSERT INTO uf(descricao) VALUES ('BA')";
+        String u6 = "INSERT INTO uf(descricao) VALUES ('CE')";
+        String u7 = "INSERT INTO uf(descricao) VALUES ('DF')";
+        String u8 = "INSERT INTO uf(descricao) VALUES ('ES')";
+        String u9 = "INSERT INTO uf(descricao) VALUES ('GO')";
+        String u10 = "INSERT INTO uf(descricao) VALUES ('MA')";
+        String u11 = "INSERT INTO uf(descricao) VALUES ('MG')";
+        String u12 = "INSERT INTO uf(descricao) VALUES ('MS')";
+        String u13 = "INSERT INTO uf(descricao) VALUES ('MT')";
+        String u14 = "INSERT INTO uf(descricao) VALUES ('PA')";
+        String u15 = "INSERT INTO uf(descricao) VALUES ('PB')";
+        String u16 = "INSERT INTO uf(descricao) VALUES ('PE')";
+        String u17 = "INSERT INTO uf(descricao) VALUES ('PI')";
+        String u18 = "INSERT INTO uf(descricao) VALUES ('PR')";
+        String u19 = "INSERT INTO uf(descricao) VALUES ('RJ')";
+        String u20 = "INSERT INTO uf(descricao) VALUES ('RN')";
+        String u21 = "INSERT INTO uf(descricao) VALUES ('RO')";
+        String u22 = "INSERT INTO uf(descricao) VALUES ('RR')";
+        String u23 = "INSERT INTO uf(descricao) VALUES ('RS')";
+        String u24 = "INSERT INTO uf(descricao) VALUES ('SC')";
+        String u25 = "INSERT INTO uf(descricao) VALUES ('SE')";
+        String u26 = "INSERT INTO uf(descricao) VALUES ('SP')";
+        String u27 = "INSERT INTO uf(descricao) VALUES ('TO')";
+
+
+        db.execSQL(u1);
+        db.execSQL(u2);
+        db.execSQL(u3);
+        db.execSQL(u4);
+        db.execSQL(u5);
+        db.execSQL(u6);
+        db.execSQL(u7);
+        db.execSQL(u8);
+        db.execSQL(u9);
+        db.execSQL(u10);
+        db.execSQL(u11);
+        db.execSQL(u12);
+        db.execSQL(u13);
+        db.execSQL(u14);
+        db.execSQL(u15);
+        db.execSQL(u16);
+        db.execSQL(u17);
+        db.execSQL(u18);
+        db.execSQL(u19);
+        db.execSQL(u20);
+        db.execSQL(u21);
+        db.execSQL(u22);
+        db.execSQL(u23);
+        db.execSQL(u24);
+        db.execSQL(u25);
+        db.execSQL(u26);
+        db.execSQL(u27);
+
+
+
+        /******************************CIDADES*********************************/
+
+        String city = "CREATE TABLE IF NOT EXISTS cidades(id_cidade INTEGER PRIMARY KEY autoincrement, descricao VARCHAR(100), cod_uf INTEGER)";
+        db.execSQL(city);
+
+
+        String ci1 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('AGUA PRETA', 16)";
+        String ci2 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ALHANDRA', 15)";
+        String ci3 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ARAPONGA', 11)";
+        String ci4 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ARES', 20)";
+        String ci5 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('BERNARDINO BATISTA', 15)";
+        String ci6 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('BRUMADO', 5)";
+        String ci7 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('CAJURI', 11)";
+        String ci8 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('CANAÃ', 11)";
+        String ci9 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('CONDADO', 16)";
+        String ci10 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ESPERA FELIZ', 11)";
+        String ci11 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('EUNAPOLIS', 5)";
+        String ci12 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('FREI MARTINHO', 15)";
+        String ci13 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('GOIANINHA', 20)";
+        String ci14 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('GUAMARÉ', 20)";
+        String ci15 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('GUARACIABA', 11)";
+        String ci16 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('GURINHÉM', 15)";
+        String ci17 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ITAPOROROCA', 15)";
+        String ci18 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('ITATUBA', 15)";
+        String ci19 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('JABOATÃO DOS GUARARAPES', 16)";
+        String ci20 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('JOCA CLAUDINO(SANTAREM)', 15)";
+        String ci21 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('MACAU', 20)";
+        String ci22 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('MOSSORÓ', 20)";
+        String ci23 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('PAULA CANDIDO', 11)";
+        String ci24 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('PAULISTA', 16)";
+        String ci25 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('PEDRA LAVRADA', 15)";
+        String ci26 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('PIRAÍ', 19)";
+        String ci27 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('PORTO DO MANGUE', 20)";
+        String ci28 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('REMIGIO', 15)";
+        String ci29 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('SANTA LUZIA', 15)";
+        String ci30 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('SÃO JOSÉ DE UBA', 19)";
+        String ci31 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('SÃO JOSÉ DO MIPIBU', 20)";
+        String ci32 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('SERRA DO MEL', 20)";
+        String ci33 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('SERTÂNIA', 16)";
+        String ci34 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('TAIPU', 20)";
+        String ci35 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('TAPEROÁ', 15)";
+        String ci36 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('TIBAU', 20)";
+        String ci37 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('TIBAU DO SUL', 20)";
+        String ci38 = "INSERT INTO cidades(descricao, cod_uf) VALUES ('TIBAU DO SUL(EDEIMAS)', 20)";
+
+        db.execSQL(ci1);
+        db.execSQL(ci2);
+        db.execSQL(ci3);
+        db.execSQL(ci4);
+        db.execSQL(ci5);
+        db.execSQL(ci6);
+        db.execSQL(ci7);
+        db.execSQL(ci8);
+        db.execSQL(ci9);
+        db.execSQL(ci10);
+        db.execSQL(ci11);
+        db.execSQL(ci12);
+        db.execSQL(ci13);
+        db.execSQL(ci14);
+        db.execSQL(ci15);
+        db.execSQL(ci16);
+        db.execSQL(ci17);
+        db.execSQL(ci18);
+        db.execSQL(ci19);
+        db.execSQL(ci20);
+        db.execSQL(ci21);
+        db.execSQL(ci22);
+        db.execSQL(ci23);
+        db.execSQL(ci24);
+        db.execSQL(ci25);
+        db.execSQL(ci26);
+        db.execSQL(ci27);
+        db.execSQL(ci28);
+        db.execSQL(ci29);
+        db.execSQL(ci30);
+        db.execSQL(ci31);
+        db.execSQL(ci32);
+        db.execSQL(ci33);
+        db.execSQL(ci34);
+        db.execSQL(ci35);
+        db.execSQL(ci36);
+        db.execSQL(ci37);
+        db.execSQL(ci38);
+
+
+        /*********************************************************************/
 
         String cidade = "CREATE TABLE IF NOT EXISTS cidade(descricao VARCHAR(100))";
 
@@ -136,21 +290,6 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
         db.execSQL(c36);
         db.execSQL(c37);
         db.execSQL(c38);
-
-
-        /*
-
-        String arrayCidades [] = new String[1000];
-        arrayCidades [0] = "INSERT INTO cidade(descricao) VALUES ('escolha uma opção')";
-        arrayCidades [1] = "INSERT INTO cidade(descricao) VALUES ('AGUA PRETA-PE')";
-        arrayCidades [2] = "INSERT INTO cidade(descricao) VALUES ('ALHANDRA-PB')";
-        arrayCidades [3] = "INSERT INTO cidade(descricao) VALUES ('ARAPONGA-MG')";
-        arrayCidades [4] = "INSERT INTO cidade(descricao) VALUES ('ARES-RN')";
-        arrayCidades [5] = "INSERT INTO cidade(descricao) VALUES ('BERNARDINO BATISTA-PB')";
-
-        for (String query :arrayCidades) {
-            db.execSQL(query);
-        }*/
 
 
 
@@ -711,6 +850,90 @@ public void updateAvaliacao(Avaliacao a){
 
 
     }*/
+
+
+    public ArrayList<Uf> getUfs(){
+
+        String colums[] = {"id_uf", "descricao"};
+
+        Cursor cursor = getWritableDatabase().query("uf", colums, null, null, null,null, null, null);
+        ArrayList<Uf> arrayListUfs = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+
+            Uf u = new Uf();
+            u.setId_uf(cursor.getInt(0));
+            u.setDescricao(cursor.getString(1));
+            arrayListUfs.add(u);
+        }
+
+        return arrayListUfs;
+    }
+
+    public ArrayList<Cidade> getCitys(){
+
+        String colums[] = {"id_cidade", "descricao", "cod_uf"};
+
+        Cursor cursor = getWritableDatabase().query("cidades", colums, null, null, null,null, null, null);
+        ArrayList<Cidade> arrayListCidades = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+
+            Cidade c = new Cidade();
+            c.setId_cidade(cursor.getInt(0));
+            c.setDescricao(cursor.getString(1));
+            c.setCod_uf(cursor.getInt(2));
+            arrayListCidades.add(c);
+        }
+
+        return arrayListCidades;
+    }
+
+    public void inserirCity(Cidade c){
+
+        try {
+
+            ContentValues values = new ContentValues();
+            values.put("descricao", c.getDescricao());
+            values.put("cod_uf", c.getCod_uf());
+
+            getWritableDatabase().insert("cidades", null, values);
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+
+        }
+    }
+
+
+    public ArrayList<Uf> getCidadesUf(){
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        String query = "SELECT uf.id_uf, uf.descricao, cidades.id_cidade, cidades.descricao FROM uf INNER JOIN cidades WHERE uf.id_uf = cidades.cod_uf ORDER BY cidades.descricao";
+
+
+        Cursor cursor = database.rawQuery(query,null);
+
+        ArrayList<Uf> arrayListCidadesUfs = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+
+            Cidade c = new Cidade();
+            Uf uf = new Uf();
+
+            uf.setId_uf(cursor.getInt(0));
+            uf.setDescricao(cursor.getString(1));
+            c.setId_cidade(cursor.getInt(2));
+            c.setDescricao(cursor.getString(3));
+            uf.setCidade(c);
+
+            arrayListCidadesUfs.add(uf);
+        }
+
+        return arrayListCidadesUfs;
+    }
 
 }
 
