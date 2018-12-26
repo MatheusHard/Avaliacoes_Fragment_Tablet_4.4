@@ -199,7 +199,6 @@ public class Fragment_Cadastro_Cidade extends Fragment {
                 Log.i("CITY - ID", String.valueOf(c.getId_cidade()));
                 Log.i("CITY - DESCRICAO", c.getDescricao());
                 Log.i("CITY - COD_UF", String.valueOf(c.getCod_uf()));
-
             }
         }
     }
