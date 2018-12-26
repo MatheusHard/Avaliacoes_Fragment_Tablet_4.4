@@ -199,100 +199,12 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
         db.execSQL(ci38);
 
 
-        /*********************************************************************/
 
-        String cidade = "CREATE TABLE IF NOT EXISTS cidade(descricao VARCHAR(100))";
-
-        db.execSQL(cidade);
-
-        /*********INSERT**********/
+        /*********USUARIO**********/
 
         String usuarioPadrao = "INSERT INTO USUARIOS(nome, senha) VALUES ('admin', '123')";
 
         db.execSQL(usuarioPadrao);
-
-        String c0 = "INSERT INTO cidade(descricao) VALUES ('escolha uma opção')";
-        String c1 = "INSERT INTO cidade(descricao) VALUES ('AGUA PRETA-PE')";
-        String c2 = "INSERT INTO cidade(descricao) VALUES ('ALHANDRA-PB')";
-        String c3 = "INSERT INTO cidade(descricao) VALUES ('ARAPONGA-MG')";
-        String c4 = "INSERT INTO cidade(descricao) VALUES ('ARES-RN')";
-        String c5 = "INSERT INTO cidade(descricao) VALUES ('BERNARDINO BATISTA-PB')";
-        String c6 = "INSERT INTO cidade(descricao) VALUES ('BRUMADO-BA')";
-        String c7 = "INSERT INTO cidade(descricao) VALUES ('CAJURI-MG')";
-        String c8 = "INSERT INTO cidade(descricao) VALUES ('CANAÃ-MG')";
-        String c9 = "INSERT INTO cidade(descricao) VALUES ('CONDADO-PE')";
-        String c10 = "INSERT INTO cidade(descricao) VALUES ('ESPERA FELIZ-MG')";
-        String c11 = "INSERT INTO cidade(descricao) VALUES ('EUNAPOLIS-BA')";
-        String c12 = "INSERT INTO cidade(descricao) VALUES ('FREI MARTINHO-PB')";
-        String c13 = "INSERT INTO cidade(descricao) VALUES ('GOIANINHA-RN')";
-        String c14 = "INSERT INTO cidade(descricao) VALUES ('GUAMARÉ-RN')";
-        String c15 = "INSERT INTO cidade(descricao) VALUES ('GUARACIABA-MG')";
-        String c16 = "INSERT INTO cidade(descricao) VALUES ('GURINHÉM-PB')";
-        String c17 = "INSERT INTO cidade(descricao) VALUES ('ITAPOROROCA-PB')";
-        String c18 = "INSERT INTO cidade(descricao) VALUES ('ITATUBA-PB')";
-        String c19 = "INSERT INTO cidade(descricao) VALUES ('JABOATÃO DOS GUARARAPES-PE')";
-        String c20 = "INSERT INTO cidade(descricao) VALUES ('JOCA CLAUDINO-PB(SANTAREM)')";
-        String c21 = "INSERT INTO cidade(descricao) VALUES ('MACAU-RN')";
-        String c22 = "INSERT INTO cidade(descricao) VALUES ('MOSSORÓ-RN')";
-        String c23 = "INSERT INTO cidade(descricao) VALUES ('PAULA CANDIDO-MG')";
-        String c24 = "INSERT INTO cidade(descricao) VALUES ('PAULISTA-PE')";
-        String c25 = "INSERT INTO cidade(descricao) VALUES ('PEDRA LAVRADA-PB')";
-        String c26 = "INSERT INTO cidade(descricao) VALUES ('PIRAÍ-RJ')";
-        String c27 = "INSERT INTO cidade(descricao) VALUES ('PORTO DO MANGUE-RN')";
-        String c28 = "INSERT INTO cidade(descricao) VALUES ('REMIGIO-PB')";
-        String c29 = "INSERT INTO cidade(descricao) VALUES ('SANTA LUZIA-PB')";
-        String c30 = "INSERT INTO cidade(descricao) VALUES ('SÃO JOSÉ DE UBA-RJ')";
-        String c31 = "INSERT INTO cidade(descricao) VALUES ('SÃO JOSÉ DO MIPIBU-RN')";
-        String c32 = "INSERT INTO cidade(descricao) VALUES ('SERRA DO MEL-RN')";
-        String c33 = "INSERT INTO cidade(descricao) VALUES ('SERTÂNIA-PE')";
-        String c34 = "INSERT INTO cidade(descricao) VALUES ('TAIPU-RN')";
-        String c35 = "INSERT INTO cidade(descricao) VALUES ('TAPEROÁ-PB')";
-        String c36 = "INSERT INTO cidade(descricao) VALUES ('TIBAU-RN')";
-        String c37 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN')";
-        String c38 = "INSERT INTO cidade(descricao) VALUES ('TIBAU DO SUL-RN (EDEIMAS)')";
-
-        db.execSQL(c0);
-        db.execSQL(c1);
-        db.execSQL(c2);
-        db.execSQL(c3);
-        db.execSQL(c4);
-        db.execSQL(c5);
-        db.execSQL(c6);
-        db.execSQL(c7);
-        db.execSQL(c8);
-        db.execSQL(c9);
-        db.execSQL(c10);
-        db.execSQL(c11);
-        db.execSQL(c12);
-        db.execSQL(c13);
-        db.execSQL(c14);
-        db.execSQL(c15);
-        db.execSQL(c16);
-        db.execSQL(c17);
-        db.execSQL(c18);
-        db.execSQL(c19);
-        db.execSQL(c20);
-        db.execSQL(c21);
-        db.execSQL(c22);
-        db.execSQL(c23);
-        db.execSQL(c24);
-        db.execSQL(c25);
-        db.execSQL(c26);
-        db.execSQL(c27);
-        db.execSQL(c28);
-        db.execSQL(c29);
-        db.execSQL(c30);
-        db.execSQL(c31);
-        db.execSQL(c32);
-        db.execSQL(c33);
-        db.execSQL(c34);
-        db.execSQL(c35);
-        db.execSQL(c36);
-        db.execSQL(c37);
-        db.execSQL(c38);
-
-
-
 
     }
 
@@ -304,11 +216,16 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
 
         String avaliacao = "DROP TABLE IF EXISTS avaliacao";
         db.execSQL(avaliacao);
+
+        String cidades = "DROP TABLE IF EXISTS cidades";
+        db.execSQL(cidades);
+
+        String uf = "DROP TABLE IF EXISTS uf";
+        db.execSQL(uf);
     }
 
 
     public void inserirAvaliacao(Avaliacao a){
-
 
         try {
 
@@ -527,112 +444,12 @@ public void updateAvaliacao(Avaliacao a){
         return arrayListAvaliacoes;
     }
 
-    //Pegar avalições de uma Cidade:
-
-    public Avaliacao getAvaliacao(int cod_cidade){
-
-        String cod = String.valueOf(cod_cidade);
-
-
-        Avaliacao a = null;
-        SQLiteDatabase database = this.getWritableDatabase();
-
-        String query = "SELECT id_av, radioSim_1, radioNao_1, radioMuito_2, radiobom_2, radioRegular_2, radioRuim_2, radioSeguro_3, " +
-                        "radioPoucoSeguro_3, radioInseguro_3, radioExcessiva_4, radioRazoavel_4, RadioInsuficiente_4, radioMuito_5, radiobom_5," +
-                "radioRegular_5, radioRuim_5 , radioMuito_6, radiobom_6, radioRegular_6,  radioRuim_6, radioMuito_7, radiobom_7, radioRegular_7," +
-                "radioRuim_7, radioMuito_8, radiobom_8, radioRegular_8, radioRuim_8, radioMuito_9, radiobom_9, radioRegular_9, radioRuim_9," +
-                "radioMuito_10, radiobom_10 , radioRegular_10, radioRuim_10, descricao, id_cidade FROM avaliacao WHERE id_cidade ="+cod;
-
-        Cursor cursor = database.rawQuery(query,null);
-
-
-        //cursor.moveToFirst();
-
-        while (cursor.moveToNext()) {
-
-            a = new Avaliacao();
-            //1
-            a.setIdAv (cursor.getInt(0));
-            a.setRadioSim_1(Integer.parseInt(cursor.getString(1)));
-            a.setRadioNao_1(Integer.parseInt(cursor.getString(2)));
-            //2
-            a.setRadioMuito_2(Integer.parseInt(cursor.getString(3)));
-            a.setRadiobom_2(Integer.parseInt(cursor.getString(4)));
-            a.setRadioRegular_2(Integer.parseInt(cursor.getString(5)));
-            a.setRadioRuim_2(Integer.parseInt(cursor.getString(6)));
-            //3
-            a.setRadioSeguro_3(Integer.parseInt(cursor.getString(7)));
-            a.setRadioPoucoSeguro_3(Integer.parseInt(cursor.getString(8)));
-            a.setRadioInseguro_3(Integer.parseInt(cursor.getString(9)));
-            //4
-            a.setRadioExcessiva_4(Integer.parseInt(cursor.getString(10)));
-            a.setRadioRazoavel_4(Integer.parseInt(cursor.getString(11)));
-            a.setRadioInsuficiente_4(Integer.parseInt(cursor.getString(12)));
-            //5
-            a.setRadioMuito_5(Integer.parseInt(cursor.getString(13)));
-            a.setRadiobom_5(Integer.parseInt(cursor.getString(14)));
-            a.setRadioRegular_5(Integer.parseInt(cursor.getString(15)));
-            a.setRadioRuim_5(Integer.parseInt(cursor.getString(16)));
-            //6
-            a.setRadioMuito_6(Integer.parseInt(cursor.getString(17)));
-            a.setRadiobom_6(Integer.parseInt(cursor.getString(18)));
-            a.setRadioRegular_6(Integer.parseInt(cursor.getString(19)));
-            a.setRadioRuim_6(Integer.parseInt(cursor.getString(20)));
-            //7
-            a.setRadioMuito_7(Integer.parseInt(cursor.getString(21)));
-            a.setRadiobom_7(Integer.parseInt(cursor.getString(22)));
-            a.setRadioRegular_7(Integer.parseInt(cursor.getString(23)));
-            a.setRadioRuim_7(Integer.parseInt(cursor.getString(24)));
-            //8
-            a.setRadioMuito_8(Integer.parseInt(cursor.getString(25)));
-            a.setRadiobom_8(Integer.parseInt(cursor.getString(26)));
-            a.setRadioRegular_8(Integer.parseInt(cursor.getString(27)));
-            a.setRadioRuim_8(Integer.parseInt(cursor.getString(28)));
-            //9
-            a.setRadioMuito_9(Integer.parseInt(cursor.getString(29)));
-            a.setRadiobom_9(Integer.parseInt(cursor.getString(30)));
-            a.setRadioRegular_9(Integer.parseInt(cursor.getString(31)));
-            a.setRadioRuim_9(Integer.parseInt(cursor.getString(32)));
-            //10
-            a.setRadioMuito_10(Integer.parseInt(cursor.getString(33)));
-            a.setRadiobom_10(Integer.parseInt(cursor.getString(34)));
-            a.setRadioRegular_10(Integer.parseInt(cursor.getString(35)));
-            a.setRadioRuim_10(Integer.parseInt(cursor.getString(36)));
-            //11
-            a.setSugestoes(cursor.getString(37));
-
-            a.setIdCidade(Integer.parseInt(cursor.getString(38)));
-        }
-        return a;
-    }
-
-
-
-
-
-    public void deletarAvaliacoes(Avaliacao a){
-
-
-        String[] args = {a.getIdCidade().toString()};
-
-        getWritableDatabase().delete("avaliacao",  "id_cidade = ?", args);
-
-
-    }
-
-    public void deletarAvaliacao(Avaliacao a){
-
+ public void deletarAvaliacao(Avaliacao a){
 
         String[] args = {a.getIdAv().toString()};
-
         getWritableDatabase().delete("avaliacao",  "id_av = ?", args);
 
-
     }
-
-
-
-
 
     /**********Metodo para buscar Avaliações por Cidade************/
 
@@ -643,7 +460,6 @@ public void updateAvaliacao(Avaliacao a){
 
         ArrayList<Avaliacao> arrayListAv = new ArrayList<Avaliacao>();
 
-
         SQLiteDatabase database = this.getWritableDatabase();
 
         String query = "SELECT id_av, radioSim_1, radioNao_1, radioMuito_2, radiobom_2, radioRegular_2, radioRuim_2, radioSeguro_3, " +
@@ -653,7 +469,6 @@ public void updateAvaliacao(Avaliacao a){
                 "radioMuito_10, radiobom_10 , radioRegular_10, radioRuim_10, descricao, id_cidade, data FROM avaliacao WHERE id_cidade ="+cod;
 
         Cursor cursor = database.rawQuery(query,null);
-
 
             //cursor.moveToFirst();
 
@@ -803,13 +618,14 @@ public void updateAvaliacao(Avaliacao a){
         return a;
     }
 
-    public void inserirCidade(Cidade c){
-
+    public void inserirCidade(Uf u){
         try {
 
             ContentValues values = new ContentValues();
-            values.put("descricao", c.getDescricao());
-            getWritableDatabase().insert("cidade", null, values);
+            values.put("descricao", u.getCidade().getDescricao());
+            values.put("cod_uf", u.getCidade().getCod_uf());
+
+            getWritableDatabase().insert("cidades", null, values);
 
         }catch (Exception e){
 
@@ -889,23 +705,6 @@ public void updateAvaliacao(Avaliacao a){
         return arrayListCidades;
     }
 
-    public void inserirCity(Cidade c){
-
-        try {
-
-            ContentValues values = new ContentValues();
-            values.put("descricao", c.getDescricao());
-            values.put("cod_uf", c.getCod_uf());
-
-            getWritableDatabase().insert("cidades", null, values);
-
-        }catch (Exception e){
-
-            e.printStackTrace();
-
-        }
-    }
-
 
     public ArrayList<Uf> getCidadesUf(){
 
@@ -933,6 +732,27 @@ public void updateAvaliacao(Avaliacao a){
         }
 
         return arrayListCidadesUfs;
+    }
+
+
+    public Uf getUfId(int id){
+
+        String id_uf = String.valueOf(id);
+        Uf uf = null;
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        String query = "SELECT uf.id_uf, uf.descricao FROM uf WHERE uf.id_uf ="+id_uf;
+
+        Cursor cursor = database.rawQuery(query,null);
+
+        while (cursor.moveToNext()){
+
+            uf = new Uf();
+            uf.setId_uf(cursor.getInt(0));
+            uf.setDescricao(cursor.getString(1));
+
+        }
+        return uf;
     }
 
 }

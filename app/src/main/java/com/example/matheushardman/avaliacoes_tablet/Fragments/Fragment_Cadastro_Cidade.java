@@ -39,13 +39,9 @@ public class Fragment_Cadastro_Cidade extends Fragment {
 
 
     private String  descricaoUf = null;
-    private String traco = "-";
     private int posicao = 0;
     private int cod_uf = 0;
 
-    String [] arrayEstados= new String [] {"escolha uma opção", "AC", "AL" , "AM", "AP", "BA", "CE" , "DF" , "ES",
-            "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN",
-            "RO", "RR", "RS", "SC", "SE", "SP",  "TO"};
 
     public Fragment_Cadastro_Cidade() {
     }
@@ -60,13 +56,6 @@ public class Fragment_Cadastro_Cidade extends Fragment {
         buttonCadastrarCidadeUf = v.findViewById(R.id.buttonCadastrarCidadeUf);
 
         spinnerEstados = v.findViewById(R.id.spinnerEstados);
-
-      /*  ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this.getActivity(),
-                android.R.layout.simple_spinner_item,
-                arrayEstados
-                //getUfs().toString()
-        );*/
 
         ArrayAdapter adapter = new ArrayAdapter(
                                                 this.getActivity(),
@@ -87,7 +76,7 @@ public class Fragment_Cadastro_Cidade extends Fragment {
                 cod_uf = uf.getId_uf();
 
                 posicao = position;
-                Toast.makeText(getContext(), descricaoUf + String.valueOf(posicao), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), descricaoUf + String.valueOf(cod_uf), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -102,7 +91,7 @@ public class Fragment_Cadastro_Cidade extends Fragment {
 
                 Cidade c = new Cidade();
 
-                if(posicao > 0 ){
+                if(cod_uf > 0){
 
                     //if((editTextCadastroCidade.getText().toString().equals("") || editTextCadastroCidade.getText().toString().equals(null))) {
                       if(editTextCadastroCidade.getText().toString().length() < 1){
@@ -112,25 +101,15 @@ public class Fragment_Cadastro_Cidade extends Fragment {
 
                     }else{
 
-                     /*   c.setDescricao(editTextCadastroCidade.getText().toString().toUpperCase()+traco+descricaoUf);
-                        validarCidade(c);*/
+
 
                         c.setDescricao(editTextCadastroCidade.getText().toString().toUpperCase());
                         c.setCod_uf(cod_uf);
 
-                        db_avaliacao.inserirCity(c);
 
-                        Toast.makeText(getContext(), "Cidade cadastrada com sucesso!!!", Toast.LENGTH_SHORT).show();
+                        validarCidade(c);
+                        carregarUfId(cod_uf);
 
-                        Fragment_Cidades someFragment = new Fragment_Cidades();
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
-                        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                        transaction.commit();
-
-                        //carregarCidades();
-                        //carregarUfs();
-                        //carregarCitys();
                         carregarCidadesUfs();
 
                     }}else{
@@ -172,43 +151,6 @@ public class Fragment_Cadastro_Cidade extends Fragment {
         }
     }
 
-    private void validarCidade(Cidade cidade) {
-
-        try{
-
-            boolean sinalVerde = true;
-            arrayListCidades = db_avaliacao.getCidades();
-            db_avaliacao.close();
-
-            if (arrayListCidades != null) {
-
-                for (String c : arrayListCidades) {
-
-                    if(c.equals(cidade.getDescricao())){
-                        sinalVerde = false;
-                    }}
-
-                if(sinalVerde) {
-
-                    db_avaliacao.inserirCidade(cidade);
-                    Toast.makeText(getContext(), "Cidade cadastrada com sucesso!!!", Toast.LENGTH_SHORT).show();
-
-                    Fragment_Cidades someFragment = new Fragment_Cidades();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
-                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                    transaction.commit();
-
-                }else{
-                    Toast.makeText(getContext(), "Cidade já existe!!!", Toast.LENGTH_SHORT).show();
-                    }
-                 }
-
-        }catch (Exception e){
-
-            Toast.makeText(getContext(), e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void carregarUfs() {
 
@@ -269,22 +211,78 @@ public class Fragment_Cadastro_Cidade extends Fragment {
         arrayListCidadesUfs = db_avaliacao.getCidadesUf();
         db_avaliacao.close();
 
-
         if (arrayListCidadesUfs !=  null) {
 
             for (Uf u: arrayListCidadesUfs ) {
 
                 Log.i("**********","***");
-                Log.i("CIDADE - ID_CI", String.valueOf(u.getCidade().getId_cidade()));
-                Log.i("CIDADE- DESCRICAO", u.getCidade().getDescricao());
+                Log.i("CIDADE - ID_CIDADE", String.valueOf(u.getCidade().getId_cidade()));
                 Log.i("CIDADE - ID_UF", String.valueOf(u.getId_uf()));
+                Log.i("CIDADE - DESC_CIDADE", u.getCidade().getDescricao());
                 Log.i("CIDADE - DESC_UF", u.getDescricao());
-
 
             }
         }
     }
 
+
+    private void validarCidade(Cidade cidade) {
+
+        try{
+
+            /*****PEGAR A UF ANTES PARA COMPARAR*****/
+            Uf estado  = db_avaliacao.getUfId(cidade.getCod_uf());
+            boolean sinalVerde = true;
+            ArrayList<Uf> arrayListCidadesUfs = new ArrayList<>();
+            arrayListCidadesUfs = db_avaliacao.getCidadesUf();
+            db_avaliacao.close();
+
+            if (arrayListCidadesUfs != null) {
+
+                for (Uf uf : arrayListCidadesUfs) {
+                    //Comparar cidade e uf do cadastro, para saber se ja existe essa cidade cadastrada nessa UF.
+                    if(uf.getCidade().getDescricao().equals(cidade.getDescricao()) && cidade.getCod_uf() == uf.getId_uf()){
+                        sinalVerde = false;
+                    }}
+
+                if(sinalVerde) {
+
+                    Uf u = new Uf();
+                    u.setCidade(cidade);
+                    db_avaliacao.inserirCidade(u);
+
+                    Toast.makeText(getContext(), "Cidade cadastrada com sucesso!!!", Toast.LENGTH_SHORT).show();
+                    Fragment_Cidades someFragment = new Fragment_Cidades();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
+                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                    transaction.commit();
+
+                }else{
+                    Toast.makeText(getContext(), "Cidade já existe!!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }catch (Exception e){
+
+            Toast.makeText(getContext(), e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void carregarUfId(int cod) {
+
+        Uf uf  = db_avaliacao.getUfId(cod);
+        db_avaliacao.close();
+
+        if (uf !=  null) {
+
+            Log.i("**********","***");
+            Log.i("UF - ID", String.valueOf(uf.getId_uf()));
+            Log.i("UF - DESCRICAO", String.valueOf(uf.getDescricao()));
+
+        }
+    }
 }
 
 
