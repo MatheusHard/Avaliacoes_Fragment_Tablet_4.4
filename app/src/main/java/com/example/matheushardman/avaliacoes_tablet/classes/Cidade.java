@@ -8,9 +8,7 @@ public class Cidade {
 
 
     @Override
-    public String toString() {
-        return this.descricao;
-    }
+    public String toString() { return this.descricao;}
 
     public int getCod_uf() {
         return cod_uf;

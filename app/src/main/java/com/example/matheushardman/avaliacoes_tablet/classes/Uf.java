@@ -7,9 +7,10 @@ public class Uf {
     private String descricao;
 
     @Override
-    public String toString() {
-        return this.cidade +"/"+ this.descricao;
-    }
+    public String toString() {        return this.cidade +"/"+ this.descricao;    }
+
+
+
 
     public Cidade getCidade() {
         return cidade;

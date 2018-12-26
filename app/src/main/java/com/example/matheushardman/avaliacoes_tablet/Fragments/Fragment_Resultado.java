@@ -67,7 +67,7 @@ public class Fragment_Resultado extends Fragment {
 
                 Uf uf = (Uf) adapter.getItemAtPosition(position);
                 posicao = position;
-                cidade  = uf.getCidade().getDescricao();
+                cidade  = String.valueOf(uf.getCidade().getDescricao()+"-"+uf.getDescricao());
                 id_cidade = uf.getCidade().getId_cidade();
                 //cidade = (String) adapter.getItemAtPosition(position);
                 //posicao = position
