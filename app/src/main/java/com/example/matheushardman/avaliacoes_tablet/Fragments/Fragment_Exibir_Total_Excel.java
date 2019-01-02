@@ -18,6 +18,8 @@ import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import jxl.Workbook;
@@ -529,6 +531,13 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             plan.addCell(cidadeLabel);
             plan.addCell(cidadeValue);
 
+
+            Label data_gerado = new Label(0, 63, getResources().getString(R.string.data_geracao), celulaVerde());
+            Label data_gerado_valor = new Label(0, 64,pegarData(), celulaValores());
+
+            plan.addCell(data_gerado);
+            plan.addCell(data_gerado_valor);
+
             wb.write();
             wb.close();
 
@@ -643,6 +652,15 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             e.printStackTrace();
         }
         return cellFormatTitulo;
+    }
+
+    private String pegarData(){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Timestamp tm = new Timestamp(System.currentTimeMillis());
+        String data = sdf.format(tm);
+        return data;
+
     }
 
 }
