@@ -60,7 +60,8 @@ public class Fragment_Cadastro_Cidade extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter(
                                                 this.getActivity(),
                                                 android.R.layout.simple_spinner_item,
-                                                getUfs());
+                                                //getUfs());
+                                                Ufs());
 
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
@@ -70,10 +71,13 @@ public class Fragment_Cadastro_Cidade extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
 
+                /*
+                Jeito Velho:
                 Uf uf = (Uf) adapter.getItemAtPosition(position);
-                //descricaoUf = adapter.getItemAtPosition(position).toString();
-                descricaoUf = uf.getDescricao();
-                cod_uf = uf.getId_uf();
+                descricaoUf = uf.getDescricao();*/
+
+                descricaoUf = adapter.getItemAtPosition(position).toString();
+                cod_uf = position + 1;
 
                 posicao = position;
                 Toast.makeText(getContext(), descricaoUf + String.valueOf(cod_uf), Toast.LENGTH_SHORT).show();
@@ -281,6 +285,14 @@ public class Fragment_Cadastro_Cidade extends Fragment {
             Log.i("UF - DESCRICAO", String.valueOf(uf.getDescricao()));
 
         }
+    }
+
+    private String [] Ufs(){
+
+        String [] arrayUfs = new String [] {"AC","AL", "AM","AP","BA","CE","DF","ES","GO",
+                                            "MA","MG", "MS","MT","PA","PB","PE","PI","PR",
+                                            "RJ","RN","RO","RR","RS","SC","SE","SP","TO"};
+        return arrayUfs;
     }
 }
 
