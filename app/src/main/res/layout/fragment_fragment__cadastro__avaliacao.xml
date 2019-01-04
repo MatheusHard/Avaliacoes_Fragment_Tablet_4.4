@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e2d6cc"
     tools:context=".Fragments.Fragment_Cadastro_Avaliacao">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
 
@@ -511,7 +514,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-
                 android:paddingBottom="20sp">
 
                 <RadioButton
@@ -547,7 +549,6 @@
 
 
             <TextView
-
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -558,7 +559,6 @@
                 android:textSize="20sp" />
 
             <EditText
-
                 android:id="@+id/editTextAvaliacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -574,7 +574,6 @@
                 android:paddingBottom="20dp" />
 
             <Button
-
                 android:id="@+id/buttonCadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -592,9 +591,6 @@
                 android:text=""
                 android:textColor="#2c2b30" />
 
-
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

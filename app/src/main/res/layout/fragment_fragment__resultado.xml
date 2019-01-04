@@ -68,22 +68,13 @@
        <Button
            android:id="@+id/buttonResultado"
            android:layout_width="match_parent"
-           android:layout_height="45dp"
-           android:layout_alignParentBottom="true"
-           android:layout_centerHorizontal="true"
+           android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
-           android:layout_marginBottom="73dp"
-           android:background="@drawable/botao_resultado"
-
-           android:shadowColor="#A8A8A8"
-           android:shadowDx="-1"
-           android:shadowDy="0"
-           android:shadowRadius="5"
+           android:background="#16ce1a"
            android:text="@string/exibir_total"
-           android:textColor="#FFFFFF"
-           android:textSize="20sp"
-           android:textStyle="bold" />
+           android:textColor="@android:color/white" />
+
 
    </LinearLayout>
 

@@ -3,293 +3,302 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e2d6cc"
     tools:context=".Fragments.Fragment_Exibir_Total_Excel">
 
     <!-- TODO: Update blank fragment layout -->
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:background="#e2d6cc"
-           android:orientation="vertical"
-           android:paddingTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#e2d6cc"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
-           <TextView
-               android:id="@+id/textView28"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingTop="20dp"
-               android:paddingBottom="20dp"
-               android:text="Total Avaliações"
-               android:textAlignment="center"
-               android:textSize="24sp"
-               android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Total Avaliações"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-           <TextView
+            <TextView
 
-               android:id="@+id/textView35"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#9b928a"
-               android:text="@string/cidade"
-               android:textAlignment="center"
-               android:textColor="@android:color/white"
-               android:textSize="20sp" />
-
-
-           <TextView
-               android:id="@+id/textViewNomeCidade"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingTop="15dp"
-               android:paddingBottom="15dp"
-               android:textAlignment="center" />
-
-           <TextView
-
-               android:id="@+id/textView30"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#9b928a"
-               android:text="@string/conteudo_teorico"
-               android:textAlignment="center"
-               android:textColor="@android:color/white"
-               android:textSize="20sp" />
-
-           <TextView
-               android:id="@+id/textView31"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/aplica_o_no_processo_de_trabalho"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textView32"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="10dp"
-               android:paddingBottom="10dp"
-               android:text="Proporcionou Novos Conhecimentos do que já possuia?" />
-
-           <TextView
-               android:id="@+id/textViewSim1"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textViewNao1"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingBottom="20dp" />
-
-           <TextView
-               android:id="@+id/textView36"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#9b928a"
-               android:text="@string/conteudo_pratico"
-               android:textAlignment="center"
-               android:textColor="@android:color/white"
-               android:textSize="20sp" />
-
-           <TextView
-               android:id="@+id/textView37"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/clareza_facilidades_de_trabalho"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewClareza2"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-
-               android:id="@+id/textView39"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10sp"
-               android:paddingTop="15sp"
-               android:paddingBottom="35sp"
-               android:text="@string/aplica_o_no_processo_de_trabalho"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewAplicacao3"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textView41"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="15dp"
-               android:paddingBottom="15dp"
-               android:text="@string/carga_horaria"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewCargaHoraria4"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingBottom="20dp" />
-
-           <TextView
-               android:id="@+id/textView46"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#9b928a"
-               android:text="@string/instrutor"
-               android:textAlignment="center"
-
-               android:textColor="@android:color/white"
-               android:textSize="20sp" />
-
-           <TextView
-               android:id="@+id/textView47"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/conhecimento_conteudo"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewConhecimentoInstrutor5"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textView49"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/clareza_exposicao"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewClareza6"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textView51"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/esclarecerDuvidas"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewDisponibilidade7"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingBottom="20dp" />
-
-           <TextView
-               android:id="@+id/textView53"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#9b928a"
-               android:text="@string/equipe_de_apoio"
-               android:textAlignment="center"
-               android:textColor="@android:color/white"
-               android:textSize="20sp" />
-
-           <TextView
-               android:id="@+id/textView54"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/conhecimento_conteudo"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewConhecimento8"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textView56"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/clareza_exposicao"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewClareza9"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp" />
-
-           <TextView
-               android:id="@+id/textView58"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingTop="20sp"
-               android:paddingBottom="15dp"
-               android:text="@string/esclarecerDuvidas"
-               android:textColor="#2c2b30"
-               android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/textViewDisponibilidade10"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="10dp"
-               android:paddingBottom="20dp" />
-
-           <Button
-               android:id="@+id/buttonGerarExcel"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="#16ce1a"
-               android:text="@string/gerar_excel"
-               android:textColor="@android:color/white" />
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/cidade"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
 
-       </LinearLayout>
-   </ScrollView>
+            <TextView
+                android:id="@+id/textViewNomeCidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textAlignment="center" />
+
+            <TextView
+
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/conteudo_teorico"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/aplica_o_no_processo_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Proporcionou Novos Conhecimentos do que já possuia?" />
+
+            <TextView
+                android:id="@+id/textViewSim1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textViewNao1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/conteudo_pratico"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_facilidades_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewClareza2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+
+                android:id="@+id/textView39"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:paddingTop="15sp"
+                android:paddingBottom="35sp"
+                android:text="@string/aplica_o_no_processo_de_trabalho"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewAplicacao3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/carga_horaria"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewCargaHoraria4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/instrutor"
+                android:textAlignment="center"
+
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/conhecimento_conteudo"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewConhecimentoInstrutor5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_exposicao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewClareza6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/esclarecerDuvidas"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDisponibilidade7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9b928a"
+                android:text="@string/equipe_de_apoio"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/conhecimento_conteudo"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewConhecimento8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/clareza_exposicao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewClareza9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/esclarecerDuvidas"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDisponibilidade10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp" />
+
+            <Button
+                android:id="@+id/buttonGerarExcel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#16ce1a"
+                android:text="@string/gerar_excel"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
