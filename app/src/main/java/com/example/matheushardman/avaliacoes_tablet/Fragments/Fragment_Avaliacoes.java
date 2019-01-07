@@ -1,11 +1,13 @@
 package com.example.matheushardman.avaliacoes_tablet.Fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +25,9 @@ public class Fragment_Avaliacoes extends Fragment {
 
     FragmentTransaction transaction;
     FloatingActionButton floatingActionButtonCadastroAvaliacao;
+    private AlertDialog alerta;
+    private int sinal = 0;
+
 
     public Fragment_Avaliacoes() {
     }
@@ -82,13 +87,47 @@ public class Fragment_Avaliacoes extends Fragment {
                 break;
 
             case R.id.menu_item_sair:
-                Toast.makeText(getContext(), "SAINDO...", Toast.LENGTH_SHORT).show();
-                getActivity().finish();
+
+                //Toast.makeText(getContext(), "SAINDO...", Toast.LENGTH_SHORT).show();
+                //getActivity().finish();
+                if(dialogSair() == 1){
+                    getActivity().finish();
+                }
+
                 break;
         }
 
         return false;
     }
+
+    private int dialogSair() {
+
+        //LayoutInflater é utilizado para inflar nosso layout em uma view.
+        //-pegamos nossa instancia da classe
+        LayoutInflater li = getLayoutInflater();
+
+        //inflamos o layout alerta.xml na view
+        final View view = li.inflate(R.layout.dialog_sair, null);
+        //definimos para o botão do layout um clickListener
+        view.findViewById(R.id.buttonDialogSim).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                //desfaz o alerta.
+                sinal = 1;
+               alerta.dismiss();
+
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Saida...");
+        builder.setView(view);
+        builder.setCancelable(false);
+        alerta = builder.create();
+        alerta.show();
+
+        return sinal;
+    }
+
 
 }
 

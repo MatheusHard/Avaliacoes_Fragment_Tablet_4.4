@@ -31,7 +31,7 @@
            android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
-           android:background="#9b928a"
+           android:background="@drawable/textview_sub_menu"
            android:text="@string/cidade"
            android:textAlignment="center"
            android:textColor="@android:color/white"
@@ -59,10 +59,10 @@
            android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
-           android:background="#495568"
+           android:background="@drawable/botao_listar"
            android:text="Listar Avaliações"
            android:textColor="@android:color/white"
-           />
+           android:textStyle="bold" />
 
 
        <Button
@@ -71,9 +71,10 @@
            android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
-           android:background="#16ce1a"
+           android:background="@drawable/botao_excel"
            android:text="@string/exibir_total"
-           android:textColor="@android:color/white" />
+           android:textColor="@android:color/white"
+           android:textStyle="bold" />
 
 
    </LinearLayout>

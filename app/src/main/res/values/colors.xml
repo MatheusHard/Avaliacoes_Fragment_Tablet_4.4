@@ -5,8 +5,17 @@
     <color name="colorAccent">#D81B60</color>
     <color name="titulo">#af191717</color>
     <color name="verde">#058420</color>
+    <color name="verdeLimao">#16ce1a</color>
     <color name="amarelo">#d0ef02</color>
     <color name="vermelho">#e80b0b</color>
     <color name="preto">#000000</color>
     <color name="azul">#0922e2</color>
+    <color name="cinzaDialog">#d7dee8</color>
+    <color name="branco">#ffffff</color>
+    <color name="cinzaClaro">#e2d6cc</color>
+    <color name="cinzaNormal">#9b928a</color>
+    <color name="amareloListar">#ccb50c</color>
+
+
+
 </resources>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9accf9"
+    android:background="@color/cinzaClaro"
     tools:context=".Fragments.Fragment_Cadastro_Cidade">
 
     <LinearLayout
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#9accf9"
+        android:background="@color/cinzaClaro"
         android:orientation="vertical">
 
         <TextView
@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="290dp"
+                android:layout_width="250dp"
                 android:layout_height="197dp"
                 android:orientation="vertical">
 
@@ -44,9 +44,10 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#9b928a"
+                    android:background="@drawable/textview_sub_menu"
                     android:text="@string/cidade"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
 
@@ -71,7 +72,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#0f3c84"
+                    android:background="@drawable/textview_sub_menu"
                     android:text="@string/uf"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
@@ -98,9 +99,9 @@
             android:id="@+id/buttonCadastrarCidadeUf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#495568"
+            android:background="@drawable/botao_salvar"
             android:text="Cadastrar"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/branco" />
 
     </LinearLayout>
 

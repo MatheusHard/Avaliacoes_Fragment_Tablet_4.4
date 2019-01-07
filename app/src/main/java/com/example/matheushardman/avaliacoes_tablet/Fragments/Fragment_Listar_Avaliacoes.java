@@ -179,21 +179,6 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     }
 
 
-   /* public void carregarAvalicoes(int cidadeId){
-
-        arrayAvaliacoes = db_avaliacao.getAvaliacoesCidade(cidadeId);
-
-        db_avaliacao.close();
-
-        if(arrayAvaliacoes != null){
-            AdapterAvaliacao adapterAvaliacao = new AdapterAvaliacao(context, arrayAvaliacoes);
-
-            adapter = new ArrayAdapter<Avaliacao>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, arrayAvaliacoes);
-            listViewAvaliacoes.setAdapter(adapterAvaliacao);
-
-        }
-    }*/
-
     private void dialogExcluir() {
 
         //Cria o gerador do AlertDialog
@@ -211,7 +196,6 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
                 db_avaliacao.deletarAvaliacao(avaliacao);
                 db_avaliacao.close();
                 carregarAvalicoes(cidadeId);
-                //Toast.makeText(MainActivity_Listar_Avaliacoes.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
             }
         });
         //define um botão como negativo.
@@ -220,6 +204,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
                 //Toast.makeText(MainActivity_Listar_Avaliacoes.this, "negativo=" + arg1, Toast.LENGTH_SHORT).show();
             }
         });
+        builder.setCancelable(false);
         //cria o AlertDialog
         alerta = builder.create();
         //Exibe
@@ -303,6 +288,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Titulo");
         builder.setView(view);
+        builder.setCancelable(false);
         alerta = builder.create();
         alerta.show();
     }
