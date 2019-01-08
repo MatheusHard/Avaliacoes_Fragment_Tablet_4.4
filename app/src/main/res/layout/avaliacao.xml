@@ -30,9 +30,10 @@
             android:id="@+id/textView30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/textview_resumo"
             android:text="@string/conteudo_teorico"
             android:textAlignment="center"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -76,9 +77,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/textview_resumo"
             android:text="@string/conteudo_pratico"
             android:textAlignment="center"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -140,9 +142,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/textview_resumo"
             android:text="@string/instrutor"
             android:textAlignment="center"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -202,9 +205,10 @@
             android:id="@+id/textView53"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/textview_resumo"
             android:text="@string/equipe_de_apoio"
             android:textAlignment="center"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -264,9 +268,10 @@
             android:id="@+id/textView59"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/textview_resumo"
             android:text="@string/sugestoes"
             android:textAlignment="center"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -282,7 +287,7 @@
             android:id="@+id/buttonResumo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/preto"
+            android:background="@drawable/botao_ok"
             android:text="OK"
             android:textColor="@android:color/background_light" />
     </LinearLayout>

@@ -88,12 +88,8 @@ public class Fragment_Avaliacoes extends Fragment {
 
             case R.id.menu_item_sair:
 
-                //Toast.makeText(getContext(), "SAINDO...", Toast.LENGTH_SHORT).show();
-                //getActivity().finish();
-                if(dialogSair() == 1){
-                    getActivity().finish();
-                }
-
+                Toast.makeText(getContext(), "SAINDO...", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
                 break;
         }
 

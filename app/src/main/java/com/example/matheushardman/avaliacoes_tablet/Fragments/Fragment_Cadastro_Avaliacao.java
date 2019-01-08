@@ -423,10 +423,6 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
             }
         });
 
-
-
-
-
         return v;
     }
 
