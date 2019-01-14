@@ -45,7 +45,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     private FragmentTransaction transaction;
     private TextView textViewSim1, textViewNao1, textViewClareza2, textViewAplicacao3, textViewCargaHoraria4,
             textViewConhecimentoInstrutor5, textViewClareza6, textViewDisponibilidade7, textViewConhecimento8,
-            textViewClareza9, textViewDisponibilidade10, textViewNomeCidade, textViewSugestao11;
+            textViewClareza9, textViewDisponibilidade10, textViewNomeCidade, textViewSugestao11, textViewVazio;
 
 
     public Fragment_Listar_Avaliacoes() {
@@ -59,6 +59,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
 
         textViewCidadeNome = v.findViewById(R.id.textViewCidadeNome);
         listViewAvaliacoes = v.findViewById(R.id.listViewAvaliacoes);
+        textViewVazio = v.findViewById(R.id.textViewVazio);
         registerForContextMenu(listViewAvaliacoes);
 
 
@@ -170,19 +171,20 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
 
         db_avaliacao.close();
 
-        if(arrayAvaliacoes != null){
+        if(arrayAvaliacoes != null && arrayAvaliacoes.size() > 0){
             //adapter = new ArrayAdapter<Avaliacao>(MainActivity_Listar_Avaliacoes.this, android.R.layout.simple_list_item_1, arrayAvaliacoes);
             adapter = new ArrayAdapter<Avaliacao>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, arrayAvaliacoes);
             listViewAvaliacoes.setAdapter(adapter);
+            textViewVazio.setVisibility(TextView.INVISIBLE);
 
+        } else{
+            textViewVazio.setText("OPS!!!, não existem Avaliações...");
         }
     }
-
 
     private void dialogExcluir() {
 
         //Cria o gerador do AlertDialog
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()); /*????????????????????*/
         //define o titulo
         builder.setTitle("Avaliação");
@@ -212,7 +214,6 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     }
 
     private void dialogResumo(){
-
 
         //LayoutInflater é utilizado para inflar nosso layout em uma view.
         //-pegamos nossa instancia da classe

@@ -34,7 +34,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="C:\Users\Matheus Hardman\Desktop\av.jpg" />
+                                      <entry key="foregroundImage" value="C:\Users\Matheus Hardman\Desktop\av_1.png" />
                                       <entry key="foregroundLayerName" value="ic_imagem_avaliacao_foregroud" />
                                       <entry key="legacyIconShape" value="CIRCLE" />
                                       <entry key="outputName" value="ic_imagem_checklist" />
@@ -76,14 +76,19 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="cropped" value="true" />
-                                      <entry key="iconShape" value="HRECT" />
-                                      <entry key="imageAsset" value="C:\Users\Matheus Hardman\Desktop\av.jpg" />
-                                      <entry key="outputName" value="ic_checklist" />
+                                      <entry key="iconShape" value="NONE" />
+                                      <entry key="imageAsset" value="C:\Users\Matheus Hardman\Desktop\av_2.png" />
+                                      <entry key="outputName" value="av_2" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

@@ -23,7 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="114dp"
-            android:background="#9b928a"
+            android:background="@drawable/textview_sub_menu"
             android:text="Avaliações"
             android:textAlignment="center"
             android:textColor="@android:color/white"
@@ -38,7 +38,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="26dp"
-            android:background="#9b928a"
+            android:background="@drawable/textview_sub_menu"
             android:text="@string/cidade"
             android:textAlignment="center"
             android:textColor="@android:color/white"
@@ -60,10 +60,27 @@
         <ListView
             android:id="@+id/listViewAvaliacoes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="310dp"
             android:layout_below="@+id/textView34"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="60dp" />
+
+        <TextView
+            android:id="@+id/textViewVazio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/listViewAvaliacoes"
+            android:layout_below="@+id/textView34"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-50dp"
+            android:textAlignment="center"
+            android:textColor="@color/vermelho"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
