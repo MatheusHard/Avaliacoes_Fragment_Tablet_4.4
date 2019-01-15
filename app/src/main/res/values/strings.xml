@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Avaliacoes_Tablet</string>
+    <string name="app_name">AVALIAÇÕES</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Matheus Hardman de Athayde</string>
+    <string name="nav_header_subtitle">matheushard2013@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="usuario">Usuario</string>
@@ -54,6 +54,14 @@
     <string name="cidade">Cidade</string>
     <string name="estado">Estado</string>
     <string name="uf">UF</string>
+    <string name="item_cadastrar_cidade">Cadastrar Cidade</string>
+    <string name="item_listar_cidade">Listar Cidades</string>
+    <string name="resumo_av">Resumo Avaliação</string>
+    <string name="data_geracao">Data Geração</string>
+    <string name="simConfirmar">Sim</string>
+    <string name="naoConfirmar">Não</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

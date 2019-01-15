@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.matheushardman.avaliacoes_tablet.R;
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.classes.Cidade;
+import com.example.matheushardman.avaliacoes_tablet.classes.Uf;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
 
 import java.sql.Timestamp;
@@ -43,6 +44,7 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
     private Button buttonCadastrar;
     private ArrayList<Avaliacao> arrayListAvaliacoes;
     private Spinner spinnerCidadesFragment;
+    private int id_cidade = 0;
 
     String [] arrayCidades = new String [] {"escolha uma opção","AGUA PRETA-PE", "ALHANDRA-PB", "ARAPONGA-MG","ARES-RN",
             "BERNARDINO BATISTA-PB", "BRUMADO-BA", "CAJURI-MG", "CANAÃ-MG", "CONDADO-PE", "ESPERA FELIZ-MG", "EUNAPOLIS-BA", "FREI MARTINHO-PB",
@@ -79,11 +81,16 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
 
         spinnerCidadesFragment = v.findViewById(R.id.spinnerCidadesFragment);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+       /* ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this.getActivity(),
                 android.R.layout.simple_spinner_item,
                 //arrayCidades);
-                db_avaliacao.getCidades());
+                db_avaliacao.getCidades());*/
+
+         ArrayAdapter adapter = new ArrayAdapter(
+                this.getActivity(),
+                android.R.layout.simple_spinner_item,
+                getCidadesUfs());
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         spinnerCidadesFragment.setAdapter(adapter);
@@ -92,7 +99,11 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
 
-                posicao = position;
+                Uf uf = (Uf) adapter.getItemAtPosition(position);
+                //descricaoUf = adapter.getItemAtPosition(position).toString();
+                posicao = position + 1;
+                id_cidade = uf.getCidade().getId_cidade();
+
 
             }
 
@@ -372,7 +383,8 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
                         /**********************************ID CIDADE*******************************************/
 
-                        a.setIdCidade(posicao);
+                       // a.setIdCidade(posicao);
+                        a.setIdCidade(id_cidade);
 
                         /**********************************ID CIDADE*******************************************/
 
@@ -382,9 +394,9 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
                         db_avaliacao.inserirAvaliacao(a);
 
-                        carregarAvaliacao(posicao);
-                        carregarAvaliacoes(posicao);
-                        carregarCidades();
+                        //carregarAvaliacao(posicao);
+                        //carregarAvaliacoes(posicao);
+                        //carregarCidades();
 
 
 
@@ -410,10 +422,6 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                 }//Fim if-else - Escolha Cidade (Spinner)
             }
         });
-
-
-
-
 
         return v;
     }
@@ -581,6 +589,17 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
             }
         }
+    }
+
+    private ArrayList<Uf> getCidadesUfs() {
+
+        ArrayList<Uf> arrayListCidadesUfs = new ArrayList<>();
+
+        arrayListCidadesUfs = db_avaliacao.getCidadesUf();
+        db_avaliacao.close();
+
+        return arrayListCidadesUfs;
+
     }
 }
 
