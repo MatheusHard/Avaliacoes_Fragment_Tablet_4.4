@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cinzaClaro">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButtonCadastroCidade"
@@ -21,7 +22,7 @@
             android:layout_marginBottom="39dp"
             android:clickable="true"
             android:src="@drawable/botao_add"
-            app:backgroundTint="@android:color/holo_blue_dark" />
+            app:backgroundTint="@android:color/holo_green_dark" />
     </RelativeLayout>
 
 </FrameLayout>
