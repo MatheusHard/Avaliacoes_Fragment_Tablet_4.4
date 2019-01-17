@@ -1,15 +1,24 @@
 package com.example.matheushardman.avaliacoes_tablet.Fragments;
 
 
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +30,8 @@ import java.io.File;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import jxl.Workbook;
 import jxl.format.Alignment;
@@ -46,7 +57,11 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
     private Button buttonGerarExcel;
     private TextView textViewSim1, textViewNao1, textViewClareza2, textViewAplicacao3, textViewCargaHoraria4,
             textViewConhecimentoInstrutor5, textViewClareza6, textViewDisponibilidade7, textViewConhecimento8,
-            textViewClareza9, textViewDisponibilidade10, textViewNomeCidade;
+            textViewClareza9, textViewDisponibilidade10, textViewNomeCidade, textViewDataImplatacao;
+    private String dateString = pegarData();
+    private AlertDialog alerta;
+
+
 
     public Fragment_Exibir_Total_Excel() {
         // Required empty public constructor
@@ -77,7 +92,19 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         textViewNomeCidade = v.findViewById(R.id.textViewNomeCidade);
 
         textViewNomeCidade.setText(cidadeNome);
+        textViewDataImplatacao = v.findViewById(R.id.textViewData);
 
+        textViewDataImplatacao.setText(dateString);
+
+        textViewDataImplatacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dataPickerImplatacao();
+                textViewDataImplatacao.setText(dateString);
+
+            }
+        });
         carregarSomaAvaliacoesTextViews(cidadeId);
 
         buttonGerarExcel = v.findViewById(R.id.buttonGerarExcel);
@@ -85,18 +112,23 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 if(cidadeId > 0) {
 
-                    gerarExcel(cidadeId, cidadeNome);
-                    Toast.makeText(getContext(), "Arquivo Excel Gerado!!!", Toast.LENGTH_LONG).show();
-                    Fragment_Resultado someFragment = new Fragment_Resultado();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
-                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                    transaction.commit();
-                    //carregarAvaliacao(posicao);
+                    if(dateString.equals(pegarData())) {
 
+                     dialogDataAtual();
 
+                    }else{
+                        gerarExcel(cidadeId, cidadeNome);
+                        Toast.makeText(getContext(), "Arquivo Excel Gerado!!!", Toast.LENGTH_LONG).show();
+                        Fragment_Resultado someFragment = new Fragment_Resultado();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
+                        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                        transaction.commit();
+
+                    }
                 }else {
 
                     Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();
@@ -531,9 +563,12 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             plan.addCell(cidadeLabel);
             plan.addCell(cidadeValue);
 
+            /**********************DATA DA AVALIACAO***************************/
 
             Label data_gerado = new Label(0, 63, getResources().getString(R.string.data_geracao), celulaVerde());
-            Label data_gerado_valor = new Label(0, 64,pegarData(), celulaValores());
+            //Label data_gerado_valor = new Label(0, 64,pegarData(), celulaValores());
+            Label data_gerado_valor = new Label(0, 64, dateString, celulaValores());
+
 
             plan.addCell(data_gerado);
             plan.addCell(data_gerado_valor);
@@ -544,6 +579,9 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+
     }
 
 
@@ -656,11 +694,74 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
     private String pegarData(){
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Timestamp tm = new Timestamp(System.currentTimeMillis());
         String data = sdf.format(tm);
         return data;
 
+    }
+
+
+    private void dataPickerImplatacao(){
+
+
+        DatePickerDialog datePickerDialog;
+        Calendar c;
+
+        c = Calendar.getInstance();
+
+        int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+        final int month = c.get(Calendar.MONTH);
+        final int year = c.get(Calendar.YEAR);
+
+        datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDayOfMonth) {
+
+                        Toast.makeText(getContext(), String.valueOf(mDayOfMonth+ "/" +(mMonth+1)+ "/" +mYear), Toast.LENGTH_SHORT).show();
+                        dateString = String.valueOf(mDayOfMonth+ "/" +(mMonth+1)+ "/" +mYear);
+                        textViewDataImplatacao.setText(dateString);
+                    }
+                }, year, month, dayOfMonth);
+        datePickerDialog.show();
+
+    }
+
+    private void dialogDataAtual() {
+
+        //Cria o gerador do AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()); /*????????????????????*/
+        //define o titulo
+        builder.setTitle("Data Atual");
+        //define a mensagem
+        builder.setMessage("Tem certeza que deseja deixar a Data da Implatação como data de hoje?");
+        //define um botão como positivo
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+
+                gerarExcel(cidadeId, cidadeNome);
+                Toast.makeText(getContext(), "Arquivo Excel Gerado!!!", Toast.LENGTH_LONG).show();
+                Fragment_Resultado someFragment = new Fragment_Resultado();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
+
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Toast.makeText(getContext(), "Cancelando...", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setCancelable(false);
+        //cria o AlertDialog
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
     }
 
 }
