@@ -283,10 +283,32 @@
                 android:paddingLeft="10dp"
                 android:paddingBottom="20dp" />
 
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/data_implantacao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_date"
+                android:paddingLeft="10dp" />
+
+
+
             <Button
                 android:id="@+id/buttonGerarExcel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/botao_excel"
                 android:text="@string/gerar_excel"
                 android:textColor="@android:color/white" />
