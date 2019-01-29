@@ -43,7 +43,7 @@ public class Fragment_Avaliacoes extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getContext(), "Acessando Cadsatro Avaliação...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Acessando Cadastro Avaliação...", Toast.LENGTH_SHORT).show();
                 Fragment_Cadastro_Avaliacao someFragment = new Fragment_Cadastro_Avaliacao();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AVALIAÇÕES</string>
+    <string name="app_name">AVALIAR IMPLANTAÇÃO</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Matheus Hardman de Athayde</string>
@@ -8,6 +8,8 @@
     <string name="action_settings">Settings</string>
     <string name="usuario">Usuario</string>
     <string name="avaliacao">Avaliação</string>
+    <string name="avaliacoes">AVALIAÇÕES</string>
+    <string name="cidades">CIDADES</string>
     <string name="senha">Senha</string>
     <string name="menu_item_listar_usuarios">Listar Usuarios</string>
     <string name="item_cadastrar_usuario">Cadastrar Usuario</string>

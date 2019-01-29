@@ -87,11 +87,13 @@ public class MainActivity_Principal extends AppCompatActivity
 
         if (id == R.id.nav_avaliacao) {
             Toast.makeText(getApplicationContext(), "ENTRANDO NAS AVALIAÇÕES...", Toast.LENGTH_SHORT).show();
+            setTitle(R.string.avaliacoes);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_Avaliacoes()).commit();
 
 
         }else if (id == R.id.nav_cidade) {
             Toast.makeText(getApplicationContext(), "ENTRANDO NAS CIDADES...", Toast.LENGTH_SHORT).show();
+            setTitle(R.string.cidades);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_Cidades()).commit();
         }
         else if (id == R.id.nav_exit) {
