@@ -290,7 +290,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="20sp"
                 android:paddingBottom="15dp"
-                android:text="@string/data_implantacao"
+                android:text="@string/data_inicio_avaliacao"
                 android:textColor="#2c2b30"
                 android:textStyle="bold" />
 
@@ -303,6 +303,24 @@
                 android:paddingLeft="10dp" />
 
 
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="20sp"
+                android:paddingBottom="15dp"
+                android:text="@string/data_fim_avaliacao"
+                android:textColor="#2c2b30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewData2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_date"
+                android:paddingLeft="10dp" />
 
             <Button
                 android:id="@+id/buttonGerarExcel"

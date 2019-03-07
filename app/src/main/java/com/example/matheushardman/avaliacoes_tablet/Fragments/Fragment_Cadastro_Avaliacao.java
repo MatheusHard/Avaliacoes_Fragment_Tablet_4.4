@@ -133,8 +133,9 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                 //Verifica a posição do Spinner(Tem que ser maior que 0):
                 if(posicao > 0) {
 
+                    /*******VALIDAÇÃO DESATIVADA******/
                     //Verifica se existe algum radio Group sem ter sido clicado:
-                    if (r1 > 0 && r2 > 0 && r3 > 0 && r4 > 0 && r5 > 0 && r6 > 0 && r7 > 0 && r8 > 0 && r9 > 0 && r10 > 0) {
+                    //if (r1 > 0 && r2 > 0 && r3 > 0 && r4 > 0 && r5 > 0 && r6 > 0 && r7 > 0 && r8 > 0 && r9 > 0 && r10 > 0) {
 
                         //***********************************RADIOGROUP 1*****************************************
 
@@ -409,12 +410,13 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                         transaction.commit();
 
-                    }else{
+                        /*******VALIDAÇÃO DESATIVADA******/
+                   // }else{
 
-                        Toast.makeText(getContext(), "Opções obrigatórias não preenchidas!!!", Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(getContext(), "Opções obrigatórias não preenchidas!!!", Toast.LENGTH_SHORT).show();
 
-                    }//Fim if-else RadioGroup
-
+                    //}//Fim if-else RadioGroup
+                    /*****************************/
                 }else{
 
                     Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();
