@@ -287,7 +287,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                     excessiva4 = 0, razoavel4 = 0, insuficiente4 = 0, muito5 = 0, bom5 = 0, regular5 = 0, ruim5 = 0,
                     muito6 = 0, bom6 = 0, regular6 = 0, ruim6 = 0, muito7 = 0, bom7 = 0, regular7 = 0, ruim7 = 0,
                     muito8 = 0, bom8 = 0, regular8 = 0, ruim8 = 0, muito9 = 0, bom9 = 0, regular9 = 0, ruim9 = 0,
-                    muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0;
+                    muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0, cont_acs = 0;
 
             arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod);
 
@@ -344,6 +344,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                     regular10 += a.getRadioRegular_10();
                     ruim10 += a.getRadioRuim_10();
 
+                    cont_acs ++;
 
                 }}
 
@@ -480,7 +481,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             Label clareza_6_4 = new Label(3, 35, getResources().getString(R.string.ruim3), celulaVerde());
             Number muitoBom6 = new Number(0, 36, muito6, celulaValores());
             Number _bom6 = new Number(1, 36, bom6 , celulaValores());
-            Number _regular6 = new Number(2, 36, regular6);
+            Number _regular6 = new Number(2, 36, regular6, celulaValores());
             Number _ruim6 = new Number(3, 36, ruim6, celulaValores());
 
             plan.addCell(clareza6);
@@ -598,13 +599,22 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
 
 
-            Label data_gerado2 = new Label(0, 66, getResources().getString(R.string.data_geracao2), celulaVerde());
+            Label data_gerado2 = new Label(1, 63, getResources().getString(R.string.data_geracao2), celulaVerde());
             //Label data_gerado_valor = new Label(0, 64,pegarData(), celulaValores());
-            Label data_gerado_valor2 = new Label(0, 67, dateString2, celulaValores());
+            Label data_gerado_valor2 = new Label(1, 64, dateString2, celulaValores());
 
 
             plan.addCell(data_gerado2);
             plan.addCell(data_gerado_valor2);
+
+            /****************TOTAL ACS's************/
+
+            Label acs_txt = new Label(2, 63, getResources().getString(R.string.total_acs), celulaVerde());
+            Number acs_valores = new Number(2, 64, cont_acs, celulaValores());
+
+            plan.addCell(acs_txt);
+            plan.addCell(acs_valores);
+
 
             wb.write();
             wb.close();

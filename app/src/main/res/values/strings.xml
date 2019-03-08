@@ -29,8 +29,8 @@
     <string name="clareza_facilidades_de_trabalho">Clareza/facilidades de trabalho:</string>
     <string name="conteudo_pratico">Conteudo Pratico</string>
     <string name="conteudo_teorico">Conteudo Teorico</string>
-    <string name="data_inicio_avaliacao">Data Inicial das Avaliações:</string>
-    <string name="data_fim_avaliacao">Data Final das Avaliações:</string>
+    <string name="data_inicio_avaliacao">Data Inicial da Implantação:</string>
+    <string name="data_fim_avaliacao">Data Final da Implantação:</string>
     <string name="excessiva">Excessiva:</string>
     <string name="razoavel">Razoavel:</string>
     <string name="insuficiente">Insuficiente:</string>
@@ -62,10 +62,12 @@
     <string name="item_cadastrar_cidade">Cadastrar Cidade</string>
     <string name="item_listar_cidade">Listar Cidades</string>
     <string name="resumo_av">Resumo Avaliação</string>
-    <string name="data_geracao">Data Inicial Avaliações</string>
-    <string name="data_geracao2">Data Final Avaliações</string>
+    <string name="data_geracao">Inicio da Implantação</string>
+    <string name="data_geracao2">Fim da Implantação</string>
     <string name="simConfirmar">Sim</string>
     <string name="naoConfirmar">Não</string>
+    <string name="total_acs">Total de ACS</string>
+
 
 
 
