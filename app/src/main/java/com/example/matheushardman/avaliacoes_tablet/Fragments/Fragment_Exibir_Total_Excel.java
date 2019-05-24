@@ -607,7 +607,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             plan.addCell(data_gerado2);
             plan.addCell(data_gerado_valor2);
 
-            /****************TOTAL ACS's************/
+            /****************TOTAL AGENTES************/
 
             Label acs_txt = new Label(2, 63, getResources().getString(R.string.total_acs), celulaVerde());
             Number acs_valores = new Number(2, 64, cont_acs, celulaValores());
