@@ -47,7 +47,7 @@ public class Fragment_Editar_Avaliacao extends Fragment {
     private ArrayList<Avaliacao> arrayListAvaliacoes;
     Avaliacao a = null;
     private FragmentTransaction transaction;
-
+    private int type_agente = 1;
 
     public Fragment_Editar_Avaliacao() {
     }
@@ -66,7 +66,10 @@ public class Fragment_Editar_Avaliacao extends Fragment {
         a = (Avaliacao) bundle.getSerializable("avaliacao-escolhida");
         cidadeNome = bundle.getString("cidadeNome");
 
-        carregarAvaliacoes(a.getIdCidade());
+        //TODO
+        /*********************MANUTENÇÃO************************/
+
+        carregarAvaliacoes(a.getIdCidade(), type_agente);
 
         textViewNomeCidadeE = v.findViewById(R.id.textViewNomeCidadeE);
 
@@ -608,9 +611,9 @@ public class Fragment_Editar_Avaliacao extends Fragment {
         super.onAttach(context);
     }
 
-    private void carregarAvaliacoes(int cod) {
+    private void carregarAvaliacoes(int cod, int type_agente) {
 
-        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod);
+        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod, type_agente);
 
         db_avaliacao.close();
 

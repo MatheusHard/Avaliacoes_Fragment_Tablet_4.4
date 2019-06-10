@@ -67,6 +67,11 @@
     <string name="simConfirmar">Sim</string>
     <string name="naoConfirmar">Não</string>
     <string name="total_acs">Total de Agentes</string>
+    <string name="acs">ACS</string>
+    <string name="ace">ACE</string>
+    <string name="agente">Agente</string>
+
+
 
 
 

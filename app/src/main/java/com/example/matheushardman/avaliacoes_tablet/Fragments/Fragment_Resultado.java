@@ -13,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.matheushardman.avaliacoes_tablet.R;
 import com.example.matheushardman.avaliacoes_tablet.classes.Uf;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
+import com.example.matheushardman.avaliacoes_tablet.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,10 @@ import java.util.ArrayList;
  */
 public class Fragment_Resultado extends Fragment {
 
-
+    private RadioGroup radioGroupAgente;
+    private RadioButton radioButtonACS, radioButtonACE;
+    private int radioChecado = 0;
+    private int type_agente = 0;
     private Context context;
     Db_Avaliacao db_avaliacao;
     private int posicao = 0;
@@ -47,6 +53,9 @@ public class Fragment_Resultado extends Fragment {
         View v = inflater.inflate(R.layout.fragment_fragment__resultado, container, false);
 
         spinnerResultado = v.findViewById(R.id.spinnerResultado);
+        radioGroupAgente = v.findViewById(R.id.radioGroupAgente);
+        radioButtonACS = v.findViewById(R.id.radioButtonACS);
+        radioButtonACE = v.findViewById(R.id.radioButtonACE);
 
         /*ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this.getActivity(),
@@ -80,17 +89,34 @@ public class Fragment_Resultado extends Fragment {
             }
         });
 
+
         //Vai para a Tela das Avaliações da Cidade
         buttonListasAvaliacoes = v.findViewById(R.id.buttonListasAvaliacoes);
         buttonListasAvaliacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(id_cidade > 0) {
 
-                    Toast.makeText(getContext(), "Listando Avaliações..", Toast.LENGTH_LONG).show();
+                /***********************************RADIOGROUP AGENTE*****************************************/
+
+                radioChecado = radioGroupAgente.getCheckedRadioButtonId();
+                if (radioChecado > 0) {
+                    switch (radioChecado) {
+                        case R.id.radioButtonACS:
+                            type_agente = Utils.TIPO_ACS;
+                            break;
+                        case R.id.radioButtonACE:
+                            type_agente = Utils.TIPO_ACE;
+                            break;
+                    }
+                }
+
+                if(id_cidade > 0 && type_agente > 0) {
+
+                    Utils.showToast(context, "Listando Avaliações..");
                     Fragment_Listar_Avaliacoes fragmentListarAvaliacoes = new Fragment_Listar_Avaliacoes();
                     Bundle bundle = new Bundle();
+                    bundle.putInt("agente", type_agente);
                     bundle.putString("cidadeNome", cidade);
                     bundle.putInt("cidadeId", id_cidade);
                     fragmentListarAvaliacoes.setArguments(bundle);
@@ -100,9 +126,8 @@ public class Fragment_Resultado extends Fragment {
                     transaction.commit();
 
                 }else{
-
-                    Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();
-                }
+                    Utils.showToast(context, "Preencha todos os campos!!!");
+                    }
 
             }
         });
@@ -114,11 +139,25 @@ public class Fragment_Resultado extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(id_cidade > 0) {
+                /***********************************RADIOGROUP AGENTE*****************************************/
 
-                    Toast.makeText(getContext(), "Acessando Exibindo Total Avaliações..", Toast.LENGTH_LONG).show();
+                radioChecado = radioGroupAgente.getCheckedRadioButtonId();
+                if (radioChecado > 0) {
+                    switch (radioChecado) {
+                        case R.id.radioButtonACS:
+                            type_agente = Utils.TIPO_ACS;
+                            break;
+                        case R.id.radioButtonACE:
+                            type_agente = Utils.TIPO_ACE;
+                            break;
+                    }
+                }
+                if(id_cidade > 0 && type_agente > 0) {
+
+                    Utils.showToast(context, "Acessando Exibindo Total Avaliações..");
                     Fragment_Exibir_Total_Excel fragmentExibirTotalExcel = new Fragment_Exibir_Total_Excel();
                     Bundle bundle = new Bundle();
+                    bundle.putInt("agente", type_agente);
                     bundle.putString("cidadeNome", cidade);
                     bundle.putInt("cidadeId", id_cidade);
                     fragmentExibirTotalExcel.setArguments(bundle);
@@ -129,7 +168,7 @@ public class Fragment_Resultado extends Fragment {
 
                 }else{
 
-                    Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();
+                    Utils.showToast(context, "Preencha todos os campos!!!");
                 }
 
             }

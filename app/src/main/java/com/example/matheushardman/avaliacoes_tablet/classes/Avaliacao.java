@@ -40,6 +40,12 @@ public class Avaliacao implements Serializable {
 
     private String sugestoes;
 
+    /******************************Agente de Saude******************************/
+
+    private int tipoAgente;
+    private String nomeAgente;
+
+
     /******************************GET E SET******************************/
 
     public Integer getIdAv() { return idAv;}
@@ -347,4 +353,14 @@ public class Avaliacao implements Serializable {
     public String getData() {return data;}
 
     public void setData(String data) {this.data = data;}
+
+
+
+    public String getNomeAgente() { return nomeAgente; }
+
+    public void setNomeAgente(String nomeAgente) { this.nomeAgente = nomeAgente; }
+
+    public int getTipoAgente() {  return tipoAgente; }
+
+    public void setTipoAgente(int tipoAgente) { this.tipoAgente = tipoAgente;}
 }

@@ -35,6 +35,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     Context context;
     private String cidadeNome;
     private int cidadeId;
+    private int type_agente;
     private TextView textViewCidadeNome;
     private ListView listViewAvaliacoes;
     private ArrayList<Avaliacao> arrayAvaliacoes;
@@ -67,6 +68,9 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
 
         cidadeNome = bundle.getString("cidadeNome");
         cidadeId = bundle.getInt("cidadeId");
+        //TODO
+        type_agente = 1;
+
 
         textViewCidadeNome.setText(cidadeNome);
 
@@ -162,12 +166,14 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     public void onResume() {
 
         super.onResume();
-        carregarAvalicoes(cidadeId);
+        carregarAvalicoes(cidadeId, type_agente);
 
     }
-    public void carregarAvalicoes(int cidadeId){
+    public void carregarAvalicoes(int cidadeId, int type){
 
-        arrayAvaliacoes = db_avaliacao.getAvaliacoesCidade(cidadeId);
+        int agente = type;
+
+        arrayAvaliacoes = db_avaliacao.getAvaliacoesCidade(cidadeId, agente);
 
         db_avaliacao.close();
 
@@ -197,7 +203,8 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
                 Toast.makeText(getContext(), "Avaliação excluida com sucesso!!!", Toast.LENGTH_SHORT).show();
                 db_avaliacao.deletarAvaliacao(avaliacao);
                 db_avaliacao.close();
-                carregarAvalicoes(cidadeId);
+                //TODO
+                carregarAvalicoes(cidadeId, type_agente);
             }
         });
         //define um botão como negativo.

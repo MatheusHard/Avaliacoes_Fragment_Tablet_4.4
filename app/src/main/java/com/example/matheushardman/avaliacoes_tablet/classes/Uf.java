@@ -5,12 +5,11 @@ public class Uf {
 
     private int id_uf;
     private String descricao;
+    private Cidade cidade;
+
 
     @Override
     public String toString() {        return this.cidade +"/"+ this.descricao;    }
-
-
-
 
     public Cidade getCidade() {
         return cidade;
@@ -19,9 +18,6 @@ public class Uf {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-
-    private Cidade cidade;
-
 
     public int getId_uf() {
         return id_uf;

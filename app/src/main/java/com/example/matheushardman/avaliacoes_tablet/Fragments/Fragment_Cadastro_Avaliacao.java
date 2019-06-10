@@ -23,6 +23,7 @@ import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.classes.Cidade;
 import com.example.matheushardman.avaliacoes_tablet.classes.Uf;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
+import com.example.matheushardman.avaliacoes_tablet.utils.Utils;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -34,11 +35,12 @@ import java.util.ArrayList;
 public class Fragment_Cadastro_Avaliacao extends Fragment {
 
 
+
     private Context context;
     Db_Avaliacao db_avaliacao;
     private ArrayList<String> arrayListCidades;
-
-    private RadioGroup radioGroup1, radioGroup2, radioGroup3, radioGroup4, radioGroup5, radioGroup6, radioGroup7, radioGroup8, radioGroup9, radioGroup10;
+    private int type_agente = 0;
+    private RadioGroup radioGroupAgente, radioGroup1, radioGroup2, radioGroup3, radioGroup4, radioGroup5, radioGroup6, radioGroup7, radioGroup8, radioGroup9, radioGroup10;
     private int radioChecado = 0;
     private EditText editTextAvaliacao;
     private Button buttonCadastrar;
@@ -76,6 +78,7 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
         radioGroup8 = v.findViewById(R.id.radioGroup8);
         radioGroup9 = v.findViewById(R.id.radioGroup9);
         radioGroup10 = v.findViewById(R.id.radioGroup10);
+        radioGroupAgente = v.findViewById(R.id.radioGroupAgente);
 
         editTextAvaliacao = v.findViewById(R.id.editTextAvaliacao);
 
@@ -129,6 +132,7 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                 int r8 = radioGroup8.getCheckedRadioButtonId();
                 int r9 = radioGroup9.getCheckedRadioButtonId();
                 int r10 = radioGroup10.getCheckedRadioButtonId();
+                int radioGrupoAgente = radioGroupAgente.getCheckedRadioButtonId();
 
                 //Verifica a posição do Spinner(Tem que ser maior que 0):
                 if(posicao > 0) {
@@ -136,7 +140,7 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                     /*******VALIDAÇÃO DESATIVADA******/
                     //Verifica se existe algum radio Group sem ter sido clicado:
                     //if (r1 > 0 && r2 > 0 && r3 > 0 && r4 > 0 && r5 > 0 && r6 > 0 && r7 > 0 && r8 > 0 && r9 > 0 && r10 > 0) {
-
+                        if(radioGrupoAgente >0 ){
                         //***********************************RADIOGROUP 1*****************************************
 
                         radioChecado = radioGroup1.getCheckedRadioButtonId();
@@ -146,6 +150,7 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                             switch (radioChecado) {
 
                                 case R.id.radioButtonSim1:
+                                    Utils.showToast(context, "TESTES");
                                     a.setRadioSim_1(1);
                                     break;
 
@@ -391,12 +396,35 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
                         a.setData(pegarData());
 
+
+
                         /**********************************DATABASE*******************************************/
+
+                    /***********************************RADIOGROUP AGENTE*****************************************/
+
+                    radioChecado = radioGroupAgente.getCheckedRadioButtonId();
+
+                    if (radioChecado > 0) {
+
+                        switch (radioChecado) {
+
+                            case R.id.radioButtonACS:
+
+                                a.setTipoAgente(Utils.TIPO_ACS);
+                                break;
+
+                            case R.id.radioButtonACE:
+
+                                a.setTipoAgente(Utils.TIPO_ACE);
+                                break;
+
+                        }
+                    }
 
                         db_avaliacao.inserirAvaliacao(a);
 
                         //carregarAvaliacao(posicao);
-                        //carregarAvaliacoes(posicao);
+                        carregarAvaliacoes(posicao, a.getTipoAgente());
                         //carregarCidades();
 
 
@@ -411,10 +439,10 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
                         transaction.commit();
 
                         /*******VALIDAÇÃO DESATIVADA******/
-                   // }else{
+                    }else {
 
-                     //   Toast.makeText(getContext(), "Opções obrigatórias não preenchidas!!!", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(getContext(), "Opções obrigatórias não preenchidas!!!", Toast.LENGTH_SHORT).show();
+                        }
                     //}//Fim if-else RadioGroup
                     /*****************************/
                 }else{
@@ -435,9 +463,9 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
         super.onAttach(context);
     }
 
-    private void carregarAvaliacoes(int cod) {
+    private void carregarAvaliacoes(int cod, int type_agente) {
 
-        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod);
+        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod, type_agente);
 
         db_avaliacao.close();
 
@@ -498,6 +526,8 @@ public class Fragment_Cadastro_Avaliacao extends Fragment {
 
                 Log.i("AVALIACAO - SUGESTÃO ", String.valueOf(a.getSugestoes()));
                 Log.i("AVALIACAO - DATA ", a.getData());
+                Log.i("AVALIACAO - AGENTE ", String.valueOf(a.getTipoAgente()));
+
                 Log.i("AVALIACAO ********** ","***");
             }
         }

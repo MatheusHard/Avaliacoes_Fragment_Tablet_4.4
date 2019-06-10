@@ -322,6 +322,48 @@
                 android:drawableLeft="@drawable/ic_date"
                 android:paddingLeft="10dp" />
 
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_sub_menu"
+                android:text="@string/agente"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+
+
+            <RadioGroup
+                android:id="@+id/radioGroupAgente"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonACS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/acs" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonACE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/ace" />
+
+            </RadioGroup>
+
             <Button
                 android:id="@+id/buttonGerarExcel"
                 android:layout_width="match_parent"

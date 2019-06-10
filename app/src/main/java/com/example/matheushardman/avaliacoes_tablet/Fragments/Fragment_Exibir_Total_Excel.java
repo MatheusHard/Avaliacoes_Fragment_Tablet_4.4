@@ -1,6 +1,7 @@
 package com.example.matheushardman.avaliacoes_tablet.Fragments;
 
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +19,15 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.matheushardman.avaliacoes_tablet.R;
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
+import com.example.matheushardman.avaliacoes_tablet.utils.Utils;
 
 import java.io.File;
 import java.sql.Timestamp;
@@ -50,10 +53,13 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
     private String cidadeNome;
     private int cidadeId;
+    private int type_agente = 0;
     private ArrayList<Avaliacao> arrayListAvaliacoes;
     Db_Avaliacao db_avaliacao;
     private Context context;
-
+    private int radioChecado = 0;
+    private RadioGroup radioGroupAgente;
+    private RadioButton radioButtonACS, radioButtonACE;
     private Button buttonGerarExcel;
     private TextView textViewSim1, textViewNao1, textViewClareza2, textViewAplicacao3, textViewCargaHoraria4,
             textViewConhecimentoInstrutor5, textViewClareza6, textViewDisponibilidade7, textViewConhecimento8,
@@ -76,8 +82,15 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
         cidadeNome = bundle.getString("cidadeNome");
         cidadeId = bundle.getInt("cidadeId");
+        type_agente = bundle.getInt("agente");
 
         /*******************IDS*****************************/
+
+
+        radioGroupAgente = v.findViewById(R.id.radioGroupAgente);
+        radioButtonACS = v.findViewById(R.id.radioButtonACS);
+        radioButtonACE = v.findViewById(R.id.radioButtonACE);
+
 
         textViewSim1 = v.findViewById(R.id.textViewSim1);
         textViewNao1 = v.findViewById(R.id.textViewNao1);
@@ -128,23 +141,38 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
             }
         });
-        carregarSomaAvaliacoesTextViews(cidadeId);
+
+        carregarSomaAvaliacoesTextViews(cidadeId, type_agente);
+
+
+        /***********Setar Valores nos Radios Buttons Agentes****************/
+
+        if(type_agente == Utils.TIPO_ACS){
+
+            radioButtonACS.setChecked(true);
+
+        }else if(type_agente == Utils.TIPO_ACE){
+
+            radioButtonACE.setChecked(true);
+        }
+
 
         buttonGerarExcel = v.findViewById(R.id.buttonGerarExcel);
         buttonGerarExcel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                if(cidadeId > 0) {
+                //TODO
+                if(cidadeId > 0 && type_agente > 0) {
 
                     if(dateString.equals(pegarData()) || dateString2.equals(pegarData())) {
 
                      dialogDataAtual();
 
                     }else{
-                        gerarExcel(cidadeId, cidadeNome);
-                        Toast.makeText(getContext(), "Arquivo Excel Gerado!!!", Toast.LENGTH_LONG).show();
+
+                        gerarExcel(cidadeId, cidadeNome, type_agente);
+                        Utils.showToast(context, "Arquivo Excel Gerado!!!");
                         Fragment_Resultado someFragment = new Fragment_Resultado();
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
@@ -153,16 +181,12 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
 
                     }
                 }else {
-
-                    Toast.makeText(getContext(), "Escolha uma Cidade!!!", Toast.LENGTH_SHORT).show();
-                }
+                      Utils.showToast(context, "Preencha todos os campos Obrigatórios!!!");
+                      }
             }
         });
 
-
-
         return v;
-
     }
 
 
@@ -173,15 +197,15 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         super.onAttach(context);
     }
 
-    private void carregarSomaAvaliacoesTextViews(int cod) {
+    private void carregarSomaAvaliacoesTextViews(int cod, int type_agente) {
 
         int sim1 = 0, nao1 = 0, muito2 = 0, bom2 = 0, regular2 = 0, ruim2 = 0, seguro3 = 0, poucoSeguro3 = 0, inseguro3 = 0,
                 excessiva4 = 0, razoavel4 = 0, insuficiente4 = 0, muito5 = 0, bom5 = 0, regular5 = 0, ruim5 = 0,
                 muito6 = 0, bom6 = 0, regular6 = 0, ruim6 = 0, muito7 = 0, bom7 = 0, regular7 = 0, ruim7 = 0,
                 muito8 = 0, bom8 = 0, regular8 = 0, ruim8 = 0, muito9 = 0, bom9 = 0, regular9 = 0, ruim9 = 0,
-                muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0;
+                muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0, tipo_agente = 0;
 
-        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod);
+        arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod, type_agente);
 
         db_avaliacao.close();
 
@@ -236,6 +260,11 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                 regular10 += a.getRadioRegular_10();
                 ruim10 += a.getRadioRuim_10();
 
+                /********NOVO ATRIBUTO*********/
+
+                tipo_agente += a.getTipoAgente();
+
+
 
             }
             textViewSim1.setText(String.format(getResources().getString(R.string.sim) +" "+ sim1));
@@ -279,7 +308,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         }
     }
 
-    private void gerarExcel(int cod, String cidade){
+    private void gerarExcel(int cod, String cidade, int type_agente){
 
         try {
 
@@ -287,9 +316,9 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                     excessiva4 = 0, razoavel4 = 0, insuficiente4 = 0, muito5 = 0, bom5 = 0, regular5 = 0, ruim5 = 0,
                     muito6 = 0, bom6 = 0, regular6 = 0, ruim6 = 0, muito7 = 0, bom7 = 0, regular7 = 0, ruim7 = 0,
                     muito8 = 0, bom8 = 0, regular8 = 0, ruim8 = 0, muito9 = 0, bom9 = 0, regular9 = 0, ruim9 = 0,
-                    muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0, cont_acs = 0;
+                    muito10 = 0, bom10 = 0, regular10 = 0, ruim10 = 0, agente = 0, cont_acs = 0;
 
-            arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod);
+            arrayListAvaliacoes = db_avaliacao.getAvaliacoesCidade(cod, type_agente);
 
             db_avaliacao.close();
 
@@ -344,14 +373,27 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
                     regular10 += a.getRadioRegular_10();
                     ruim10 += a.getRadioRuim_10();
 
+
+                    /********NOVO ATRIBUTO*********/
+
+                    agente += a.getTipoAgente();
                     cont_acs ++;
 
                 }}
 
 
+        /*******GERAR ARQUIVO TIO DE AGENTE*******/
 
+            if(type_agente == Utils.TIPO_ACS){
 
-            File file = new File(getActivity().getExternalFilesDir(null), cidade+".xls");
+                Utils.AGENTE = Utils.ACS;
+            }
+            if(type_agente == Utils.TIPO_ACE){
+
+                Utils.AGENTE = Utils.ACE;
+            }
+
+            File file = new File(getActivity().getExternalFilesDir(null), cidade +Utils.AGENTE+ ".xls");
             // File file = new File(getFilesDir(),"Teste.xls");
 
             WritableWorkbook wb = null;
@@ -587,7 +629,7 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             plan.addCell(cidadeLabel);
             plan.addCell(cidadeValue);
 
-            /**********************DATAS DAS AVALIACAÕES***************************/
+            /**********************DATAS DAS AVALIACÕES***************************/
 
             Label data_gerado = new Label(0, 63, getResources().getString(R.string.data_geracao), celulaVerde());
             //Label data_gerado_valor = new Label(0, 64,pegarData(), celulaValores());
@@ -812,8 +854,8 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
 
-                gerarExcel(cidadeId, cidadeNome);
-                Toast.makeText(getContext(), "Arquivo Excel Gerado!!!", Toast.LENGTH_LONG).show();
+                gerarExcel(cidadeId, cidadeNome, type_agente);
+                Utils.showToast(context, "Arquivo Excel Gerado!!!");
                 Fragment_Resultado someFragment = new Fragment_Resultado();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment, someFragment); // give your fragment container id in first parameter
@@ -825,8 +867,10 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
         //define um botão como negativo.
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(getContext(), "Cancelando...", Toast.LENGTH_SHORT).show();
-            }
+
+                Utils.showToast(context, "Cancelando..");
+
+                }
         });
         builder.setCancelable(false);
         //cria o AlertDialog

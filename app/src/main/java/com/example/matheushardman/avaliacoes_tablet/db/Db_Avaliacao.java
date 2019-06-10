@@ -44,7 +44,8 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
         "radioMuito_8 INTEGER, radiobom_8 INTEGER, radioRegular_8 INTEGER, radioRuim_8 INTEGER, "+
         "radioMuito_9 INTEGER, radiobom_9 INTEGER, radioRegular_9 INTEGER, radioRuim_9 INTEGER, "+
         "radioMuito_10 INTEGER, radiobom_10 INTEGER, radioRegular_10 INTEGER, radioRuim_10 INTEGER, "+
-        "descricao VARCHAR (500), id_cidade INTEGER, data VARCHAR(20))";
+        "descricao VARCHAR (500), id_cidade INTEGER, data VARCHAR(20), nome_agente VARCHAR(50), " +
+        "tipo_agente INTEGER)";
 
         db.execSQL(avaliacao);
 
@@ -269,21 +270,24 @@ public class Db_Avaliacao extends SQLiteOpenHelper {
 
             values.put("radioMuito_9", a.getRadioMuito_9());
             values.put("radiobom_9", a.getRadiobom_9());
-            values.put("radioRegular_9",a.getRadioRegular_9());
-            values.put("radioRuim_9",a.getRadioRuim_9());
+            values.put("radioRegular_9", a.getRadioRegular_9());
+            values.put("radioRuim_9", a.getRadioRuim_9());
 
             values.put("radioMuito_10", a.getRadioMuito_10());
             values.put("radiobom_10", a.getRadiobom_10());
             values.put("radioRegular_10",a.getRadioRegular_10());
-            values.put("radioRuim_10",a.getRadioRuim_10());
+            values.put("radioRuim_10", a.getRadioRuim_10());
 
-            values.put("descricao",a.getSugestoes());
+            values.put("descricao", a.getSugestoes());
 
-            values.put("id_cidade",a.getIdCidade());
+            values.put("id_cidade", a.getIdCidade());
 
-            values.put("data",a.getData());
+            values.put("data", a.getData());
 
+           /***Novos dados***/
 
+            values.put("nome_agente", a.getNomeAgente());
+            values.put("tipo_agente", a.getTipoAgente());
 
             getWritableDatabase().insert("avaliacao", null, values);
 
@@ -349,7 +353,13 @@ public void updateAvaliacao(Avaliacao a){
 
         values.put("descricao",a.getSugestoes());
 
-        values.put("id_av",a.getIdAv());
+
+         /***Novos dados***/
+
+         values.put("nome_agente", a.getNomeAgente());
+         values.put("tipo_agente", a.getTipoAgente());
+
+         values.put("id_av", a.getIdAv());
 
 
          String[] args = {a.getIdAv().toString()};
@@ -453,10 +463,11 @@ public void updateAvaliacao(Avaliacao a){
 
     /**********Metodo para buscar Avaliações por Cidade************/
 
-    public ArrayList<Avaliacao> getAvaliacoesCidade(int cod_cidade){
+    public ArrayList<Avaliacao> getAvaliacoesCidade(int cod_cidade, int type_agente){
 
         Avaliacao a = null;
         String cod = String.valueOf(cod_cidade);
+        String tipo_agente = String.valueOf(type_agente);
 
         ArrayList<Avaliacao> arrayListAv = new ArrayList<Avaliacao>();
 
@@ -466,7 +477,8 @@ public void updateAvaliacao(Avaliacao a){
                 "radioPoucoSeguro_3, radioInseguro_3, radioExcessiva_4, radioRazoavel_4, RadioInsuficiente_4, radioMuito_5, radiobom_5," +
                 "radioRegular_5, radioRuim_5 , radioMuito_6, radiobom_6, radioRegular_6,  radioRuim_6, radioMuito_7, radiobom_7, radioRegular_7," +
                 "radioRuim_7, radioMuito_8, radiobom_8, radioRegular_8, radioRuim_8, radioMuito_9, radiobom_9, radioRegular_9, radioRuim_9," +
-                "radioMuito_10, radiobom_10 , radioRegular_10, radioRuim_10, descricao, id_cidade, data FROM avaliacao WHERE id_cidade ="+cod;
+                "radioMuito_10, radiobom_10 , radioRegular_10, radioRuim_10, descricao, id_cidade, data, nome_agente, tipo_agente FROM avaliacao " +
+                "WHERE id_cidade ="+cod+" AND tipo_agente="+tipo_agente;
 
         Cursor cursor = database.rawQuery(query,null);
 
@@ -528,6 +540,10 @@ public void updateAvaliacao(Avaliacao a){
             a.setIdCidade(Integer.parseInt(cursor.getString(38)));
 
             a.setData(cursor.getString(39));
+
+            a.setNomeAgente(cursor.getString(40));
+
+            a.setTipoAgente(Integer.parseInt(cursor.getString(41)));
 
             arrayListAv.add(a);
 
