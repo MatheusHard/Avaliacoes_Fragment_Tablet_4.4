@@ -162,7 +162,6 @@ public class Fragment_Exibir_Total_Excel extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //TODO
                 if(cidadeId > 0 && type_agente > 0) {
 
                     if(dateString.equals(pegarData()) || dateString2.equals(pegarData())) {

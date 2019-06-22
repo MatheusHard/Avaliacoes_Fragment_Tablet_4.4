@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.example.matheushardman.avaliacoes_tablet.Adapters.AdapterAvaliacao;
 import com.example.matheushardman.avaliacoes_tablet.R;
 import com.example.matheushardman.avaliacoes_tablet.classes.Avaliacao;
 import com.example.matheushardman.avaliacoes_tablet.db.Db_Avaliacao;
+import com.example.matheushardman.avaliacoes_tablet.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
     private int type_agente;
     private TextView textViewCidadeNome;
     private ListView listViewAvaliacoes;
+    private RadioButton radioButtonACS, radioButtonACE;
     private ArrayList<Avaliacao> arrayAvaliacoes;
     private ArrayAdapter<Avaliacao> adapter;
     Avaliacao avaliacao = new Avaliacao();
@@ -61,6 +64,8 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
         textViewCidadeNome = v.findViewById(R.id.textViewCidadeNome);
         listViewAvaliacoes = v.findViewById(R.id.listViewAvaliacoes);
         textViewVazio = v.findViewById(R.id.textViewVazio);
+        radioButtonACS = v.findViewById(R.id.radioButtonACS);
+        radioButtonACE = v.findViewById(R.id.radioButtonACE);
         registerForContextMenu(listViewAvaliacoes);
 
 
@@ -68,9 +73,7 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
 
         cidadeNome = bundle.getString("cidadeNome");
         cidadeId = bundle.getInt("cidadeId");
-        //TODO
-        type_agente = 1;
-
+        type_agente = bundle.getInt("agente");
 
         textViewCidadeNome.setText(cidadeNome);
 
@@ -102,6 +105,18 @@ public class Fragment_Listar_Avaliacoes extends Fragment {
                 return false;
             }
         });
+
+
+        /***********Setar Valores nos Radios Buttons Agentes****************/
+
+        if(type_agente == Utils.TIPO_ACS){
+
+            radioButtonACS.setChecked(true);
+
+        }else if(type_agente == Utils.TIPO_ACE){
+
+            radioButtonACE.setChecked(true);
+        }
 
 
         return v;
